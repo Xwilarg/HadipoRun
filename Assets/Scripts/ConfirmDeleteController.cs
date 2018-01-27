@@ -10,6 +10,6 @@ public class ConfirmDeleteController : MonoBehaviour {
 
 	void onClickYes() {
 		ScoreManager sm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ScoreManager>();
-
+		sm.gameOverBSOD ();
 	}
 }
