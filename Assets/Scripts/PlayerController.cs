@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D rb;
 
-    [Tooltip("Reference vers le createur de popup")]
-    public PopUpManager popUp;
+    private PopUpManager popUp;
 
 	// Use this for initialization
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody2D>();
+		popUp = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<PopUpManager> ();
 	}
 
 	void FixedUpdate ()
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag ("Item")) {
-            //popUp.AddAnnoyingPopup();
+			popUp.AddDownloadingPopup ("Porn.mp5", Random.Range(200, 2000));
             Destroy (other.gameObject);
         }
     }

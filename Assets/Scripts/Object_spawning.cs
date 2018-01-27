@@ -28,7 +28,7 @@ public class Object_spawning : MonoBehaviour
 	{
 		if (currTime <= 0)
 		{
-			float maxX = Random.Range(transform.position.x - transform.localScale.x, transform.position.x + transform.localScale.x);
+			float maxX = Random.Range(-transform.localScale.x, transform.localScale.x);
 	        int obj = Random.Range(0, Spawnable.Count);
 	        //int yAxis = rand.Next(0, (int)zone);
 			Vector2 spawnPlace = new Vector2(transform.position.x + maxX, transform.position.y);

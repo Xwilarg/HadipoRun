@@ -14,7 +14,7 @@ public class FileDestroyer : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter2D(Collision2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         Destroy(collider.gameObject);
     }

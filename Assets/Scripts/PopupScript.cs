@@ -47,7 +47,7 @@ public class PopupScript : MonoBehaviour {
         loadingTime = fileSize / downloadSpeed;
         currTime = 0.0f;
         setDownloadInfos();
-        sm = GameObject.Find("GameManager").GetComponent<ScoreManager>();
+		sm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ScoreManager>();
     }
 
     private void Update ()
