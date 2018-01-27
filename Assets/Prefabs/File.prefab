@@ -186,8 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.67
-  move_horizontal: 0
-  move_vertical: -1
+  chanceVirus: 25
 --- !u!212 &212549008228034092
 SpriteRenderer:
   m_ObjectHideFlags: 1
