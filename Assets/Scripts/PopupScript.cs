@@ -27,6 +27,7 @@ public class PopupScript : MonoBehaviour {
     {
         this.fileSize = fileSize;
         this.windowName.text = windowName;
+        windowContent.text = windowName + windowContent.text;
     }
 
     public void setDownloadInfos()

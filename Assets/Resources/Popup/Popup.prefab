@@ -424,7 +424,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Audio.mp3 from T404.to
+  m_Text: ' from T404.to'
 --- !u!114 &114486319763173928
 MonoBehaviour:
   m_ObjectHideFlags: 1
