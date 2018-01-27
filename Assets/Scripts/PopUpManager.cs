@@ -19,7 +19,7 @@ public class PopUpManager : MonoBehaviour {
 
     private void Update ()
     {
-        timer += refTimer
+        timer += refTimer;
 	    foreach (PopUp pu in popUps)
         {
             pu.Update();
