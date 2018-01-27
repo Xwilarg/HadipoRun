@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.UI;
 
 public class PopUpManager : MonoBehaviour {
 
@@ -9,10 +7,11 @@ public class PopUpManager : MonoBehaviour {
     public Vector2 intervalle;
     [Tooltip("Canvas")]
     public Canvas canvas;
-
-    private List<PopUp> popUps;
+    
     private float timer;
     private float refTimer;
+
+    private GameObject samplePopUp;
 
     private void ResetTimer()
     {
@@ -24,7 +23,7 @@ public class PopUpManager : MonoBehaviour {
     {
         Assert.IsTrue(intervalle.x > 0 && intervalle.y > 0, "Intervalle bounds must be greater than 0.");
         Assert.IsTrue(intervalle.x < intervalle.y, "Intervalle lower bound must be lower than highter bound.");
-        popUps = new List<PopUp>();
+        samplePopUp = Resources.Load("Popup/EmptyPopUp") as GameObject;
         ResetTimer();
     }
 
@@ -33,25 +32,23 @@ public class PopUpManager : MonoBehaviour {
         timer += Time.deltaTime;
         if (timer > refTimer)
         {
-            AddPopup();
+            AddAnnoyingPopup();
             refTimer = Random.Range(intervalle.x, intervalle.y);
-        }
-	    foreach (PopUp pu in popUps)
-        {
-            pu.Update();
         }
 	}
 
-    private void AddPopup()
+    private void AddAnnoyingPopup()
     {
-        GameObject pu = new GameObject("Annoying PopUp", typeof(Image));
-        pu.transform.parent = canvas.transform;
-        Image img = pu.GetComponent<Image>();
-        RectTransform rt = pu.GetComponent<RectTransform>();
-        img.sprite = Resources.Load<Sprite>("Popup/ErrorPopupSimple");
-        img.SetNativeSize();
-        rt.localPosition = Vector3.zero;
-        rt.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        AddPopup(samplePopUp, "Annoying Popup");
+    }
+
+    private void AddPopup(GameObject go, string popupName)
+    {
+        GameObject pu = Instantiate(go, Vector3.zero, Quaternion.identity);
+        pu.name = popupName;
+        pu.transform.SetParent(canvas.transform, false);
+        pu.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        RectTransform canvasPos = canvas.transform as RectTransform;
         ResetTimer();
     }
 }
