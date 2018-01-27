@@ -8,6 +8,8 @@ public class PopupScript : MonoBehaviour {
     public Image loadingBar;
     [Tooltip("Cancel button if exist")]
     public Button cancelButton;
+    [Tooltip("Cross button if exist")]
+    public Button crossButton;
     [Tooltip("Window name")]
     public Text windowName;
     [Tooltip("Window content (text)")]
@@ -62,6 +64,9 @@ public class PopupScript : MonoBehaviour {
                 Button b = cancelButton.GetComponent<Button>();
                 b.onClick.RemoveAllListeners();
                 b.onClick.AddListener(Accept);
+                Button cross = crossButton.GetComponent<Button>();
+                cross.onClick.RemoveAllListeners();
+                cross.onClick.AddListener(Accept);
                 loadingBar.rectTransform.localScale = new Vector2(1.0f, loadingBar.rectTransform.localScale.y);
                 loadingBar = null;
             }

@@ -490,6 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingBar: {fileID: 114194866669346464}
   cancelButton: {fileID: 114486319763173928}
+  crossButton: {fileID: 114635579371889142}
   windowName: {fileID: 114315677820631012}
   windowContent: {fileID: 114483148158781480}
   downloadInfos: {fileID: 114392646433549488}
