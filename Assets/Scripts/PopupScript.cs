@@ -3,38 +3,42 @@ using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class PopupScript : MonoBehaviour {
-
-    [Tooltip("ScoreManager attached to the GameManager")]
-    ScoreManager sm;
+    
     [Tooltip("Loading bar if exist")]
     public Image loadingBar;
     [Tooltip("Cancel button if exist")]
     public Button cancelButton;
-    [Tooltip("Accept button if exist")]
-    public Button acceptButton;
 
     private float currTime;
-    public float loadingTime { set; private get; }
-    public int fileSize { set; private get; }
+    private float loadingTime = -1;
+    private int fileSize = -1;
+    private ScoreManager sm;
+
+    public void setDownloadVars(float loadingTime, int fileSize)
+    {
+        this.loadingTime = loadingTime;
+        this.fileSize = fileSize;
+    }
 
     private void Start()
     {
         currTime = 0.0f;
-        loadingTime = -1.0f;
-        fileSize = 0;
+        sm = GameObject.Find("GameManager").GetComponent<ScoreManager>();
     }
 
     private void Update ()
     {
-        Assert.IsTrue(fileSize > 0, "File Size must be set as a positive value before first Update() call");
         if (loadingBar != null)
         {
-            Assert.IsTrue(loadingTime > 0.0f, "Loading time must be set as a positive value before first Update() call");
+            Assert.IsTrue(loadingTime > 0.0f && fileSize > 0, "Loading time and file size must be set as a positive value before first Update() call");
             currTime += Time.deltaTime;
             float prog = currTime / loadingTime;
             if (prog > 1.0f)
             {
-                acceptButton.interactable = true;
+                cancelButton.GetComponentInChildren<Text>().text = "Ok";
+                Button b = cancelButton.GetComponent<Button>();
+                b.onClick.RemoveAllListeners();
+                b.onClick.AddListener(Accept);
                 loadingBar.rectTransform.localScale = new Vector2(1.0f, loadingBar.rectTransform.localScale.y);
                 loadingBar = null;
             }

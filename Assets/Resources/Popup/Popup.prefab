@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 224561491531585590}
   - component: {fileID: 222575872301620888}
   - component: {fileID: 114836899728273994}
+  - component: {fileID: 114536837734919716}
   m_Layer: 5
   m_Name: Popup
   m_TagString: Untagged
@@ -263,9 +264,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114943949231298986}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114536837734919716}
+        m_MethodName: Cancel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114536837734919716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1931553545885768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0ee140dd7eb90408e596042b5c5019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBar: {fileID: 114226116284936348}
+  cancelButton: {fileID: 114398474303804456}
 --- !u!114 &114836899728273994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -424,7 +449,7 @@ RectTransform:
   m_GameObject: {fileID: 1345803313347480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224845679567332410}
   m_RootOrder: 0

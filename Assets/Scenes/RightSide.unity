@@ -358,9 +358,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2145577886}
   - component: {fileID: 2145577887}
+  - component: {fileID: 2145577888}
   m_Layer: 5
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,3 +397,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intervalle: {x: 1, y: 3}
   canvas: {fileID: 1423879592}
+--- !u!114 &2145577888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2145577885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931c85217dea2244395af5ee0d7d42af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
