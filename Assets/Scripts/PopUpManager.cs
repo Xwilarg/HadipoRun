@@ -47,6 +47,12 @@ public class PopUpManager : MonoBehaviour {
         pu.GetComponent<PopupScript>().setDownloadVars(Random.Range(2, 10), Random.Range(10, 1000));
         pu.name = popupName;
         pu.transform.SetParent(canvas.transform, false);
+        RectTransform canvasTranform = canvas.transform as RectTransform;
+        RectTransform puTranform = pu.transform as RectTransform;
+        Vector2 minRatio = new Vector2((puTranform.rect.width / 2) / canvasTranform.rect.width, (puTranform.rect.height / 2) / canvasTranform.rect.height);
+        Vector2 spawnPoint = new Vector2(Random.Range(minRatio.x, 1 - minRatio.x), Random.Range(minRatio.y, 1 - minRatio.y));
+        puTranform.anchorMin = spawnPoint;
+        puTranform.anchorMax = spawnPoint;
         ResetTimer();
     }
 }
