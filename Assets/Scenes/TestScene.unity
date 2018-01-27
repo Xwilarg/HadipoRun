@@ -785,7 +785,7 @@ MonoBehaviour:
   spawnDelayMin: 2
   spawnDelayMax: 3
   Item: {fileID: 1687919283588290, guid: f038116eabfd9724eb8e1bcd5122a182, type: 2}
---- !u!114 &2079266259
+--- !u!114 &2079266257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -793,7 +793,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2079266255}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3cfcfe8a25c5cb43bfce0a5fc670bd5, type: 3}
+  m_Script: {fileID: 11500000, guid: f5bda0756e66045478c51c493ee7dfdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2145577885
@@ -843,6 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intervalle: {x: 1, y: 3}
+  inAvest: {x: 1, y: 3}
   canvas: {fileID: 1423879592}
 --- !u!114 &2145577888
 MonoBehaviour:

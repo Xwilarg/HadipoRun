@@ -5,11 +5,15 @@ public class PopUpManager : MonoBehaviour {
 
     [Tooltip("Intervalle before next popup spam spawn in seconds")]
     public Vector2 intervalle;
+    [Tooltip("Intervalle before next avest popup spawn in seconds")]
+    public Vector2 inAvest;
     [Tooltip("Canvas")]
     public Canvas canvas;
     
     private float timer;
     private float refTimer;
+    private float timerAvest;
+    private float refTimerAvest;
     private GameObject samplePopUp;
 
     private void ResetTimer()
@@ -18,11 +22,17 @@ public class PopUpManager : MonoBehaviour {
         refTimer = Random.Range(intervalle.x, intervalle.y);
     }
 
+    private void ResetTimerAvest()
+    {
+        timerAvest = 0.0f;
+        refTimerAvest = Random.Range(inAvest.x, inAvest.y);
+    }
+
     private void Start()
     {
-        Assert.IsTrue(intervalle.x > 0 && intervalle.y > 0, "Intervalle bounds must be greater than 0.");
-        Assert.IsTrue(intervalle.x < intervalle.y, "Intervalle lower bound must be lower than highter bound.");
-        samplePopUp = Resources.Load("Popup/Popup") as GameObject;
+        Assert.IsTrue(intervalle.x > 0 && intervalle.y > 0 && inAvest.x > 0 && inAvest.y > 0, "Intervalle bounds must be greater than 0.");
+        Assert.IsTrue(intervalle.x < intervalle.y && inAvest.x < inAvest.y, "Intervalle lower bound must be lower than highter bound.");
+        samplePopUp = Resources.Load("Popup/DownloadPopup") as GameObject;
         ResetTimer();
     }
 
