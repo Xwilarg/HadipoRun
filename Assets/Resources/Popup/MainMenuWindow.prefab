@@ -230,7 +230,6 @@ GameObject:
   - component: {fileID: 222672728197413180}
   - component: {fileID: 114370311703744222}
   - component: {fileID: 114609554346430846}
-  - component: {fileID: 114210427392511692}
   m_Layer: 5
   m_Name: MainMenuWindow
   m_TagString: Untagged
@@ -385,17 +384,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114210427392511692
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778259048339220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a33cc6d2f812deb418b70191290c8663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114304181251252962
 MonoBehaviour:
   m_ObjectHideFlags: 1
