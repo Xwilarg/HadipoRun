@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Spawner : MonoBehaviour {
+public class SpawnerController : MonoBehaviour {
 
 	// Use this for initialization
 	private ItemSpawn[] ItemList;	
