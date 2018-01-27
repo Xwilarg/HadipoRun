@@ -13,4 +13,8 @@ public class ScoreManager : MonoBehaviour {
     {
         score += addScore;
     }
+
+	public void gameOverBSOD() {
+		
+	}
 }
