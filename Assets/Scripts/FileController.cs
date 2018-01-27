@@ -12,8 +12,9 @@ public class FileController : MonoBehaviour {
 	[Tooltip("Mouvement vertical du Ficher")]
 	[Range(0, -1)]
 	public float move_vertical;
-	public float size {set; private get;}
-	public string title { set; private get;}
+
+	public float size {private set; get;}
+	public string title { private set; get;}
 
 	private Rigidbody2D rb;
 	private TextMesh textMesh;

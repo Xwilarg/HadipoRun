@@ -31,12 +31,12 @@ public class PopUpManager : MonoBehaviour {
     {
         timer += Time.deltaTime;
         if (timer > refTimer)        {
-            AddAnnoyingPopup();
+            //AddAnnoyingPopup();
             refTimer = Random.Range(intervalle.x, intervalle.y);
         }
 	}
 
-    private void AddAnnoyingPopup()
+    public void AddAnnoyingPopup()
     {
         AddPopup(samplePopUp, "Annoying Popup");
     }

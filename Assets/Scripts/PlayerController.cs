@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D rb;
 
+    [Tooltip("Reference vers le createur de popup")]
+    public PopUpManager popUp;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -22,10 +25,11 @@ public class PlayerController : MonoBehaviour {
 		rb.velocity = new Vector2(Mathf.Lerp(0, moveHorizontal * speed, 0.8f), 0.0f);
 		rb.AddForce (movement * speed);
 	}
-	void OnCollisionEnter2D(Collision2D other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag ("Item")) {
-			Destroy (other.gameObject);
-		}
-	}
+            popUp.AddAnnoyingPopup();
+            Destroy (other.gameObject);
+        }
+    }
 }

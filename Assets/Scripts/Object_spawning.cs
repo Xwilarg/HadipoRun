@@ -29,9 +29,10 @@ public class Object_spawning : MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
-        float maxX= max_range();
+		int maxX = Random.Range((int)(col2D.transform.localScale.x * -1), (int)col2D.transform.localScale.x);
         int obj = Random.Range(0, Spawnable.Count);
-        int yAxis = Random.Range(0, (int)col2D.transform.position.y);
+        //int yAxis = rand.Next(0, (int)zone);
+		Vector2 spawnPlace = new Vector2(col2D.transform.position.x + maxX, col2D.transform.position.y);
 
         Vector2 spawnPlace = new Vector2(maxX, yAxis);
 
