@@ -30,7 +30,7 @@ public class PopUpManager : MonoBehaviour {
     {
         timer += Time.deltaTime;
         if (timer > refTimer)        {
-            AddDownloadingPopup("Audio.mp3", 500);
+            AddDownloadingPopup("Audio.mp3", Random.Range(500, 3000));
             refTimer = Random.Range(intervalle.x, intervalle.y);
         }
 	}

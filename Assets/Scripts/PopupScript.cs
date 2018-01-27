@@ -33,7 +33,7 @@ public class PopupScript : MonoBehaviour {
     {
         if (downloadInfos != null)
         {
-            downloadInfos.text = "Downloaded:	" + (downloaded / 1000).ToString("0.0") + " MB in " + currTime.ToString("0.0") + " seconds" + System.Environment.NewLine +
+            downloadInfos.text = "Downloaded:	" + (downloaded / 1000.0f).ToString("0.0") + " MB in " + currTime.ToString("0.0") + " seconds" + System.Environment.NewLine +
                                  "Download to:	C:\\Users\\Kevin-du-84\\Music" + System.Environment.NewLine +
                                  "Transfer rate: " + (downloadSpeed + Random.Range(-0.2f, 0.2f)).ToString("0.0") + " KB/s" + System.Environment.NewLine;
         }
@@ -53,9 +53,9 @@ public class PopupScript : MonoBehaviour {
     private void Update ()
     {
         currTime += Time.deltaTime;
+        downloaded += downloadSpeed * Time.deltaTime;
         if (loadingBar != null && Random.Range(0, 100) < 5)
         {
-            downloaded += downloadSpeed * Time.deltaTime;
             float prog = currTime / loadingTime;
             if (prog > 1.0f)
             {
