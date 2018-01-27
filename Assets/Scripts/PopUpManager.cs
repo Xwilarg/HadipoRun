@@ -10,7 +10,6 @@ public class PopUpManager : MonoBehaviour {
     
     private float timer;
     private float refTimer;
-
     private GameObject samplePopUp;
 
     private void ResetTimer()
@@ -31,20 +30,25 @@ public class PopUpManager : MonoBehaviour {
     {
         timer += Time.deltaTime;
         if (timer > refTimer)        {
-            AddAnnoyingPopup();
+            AddDownloadingPopup("Audio.mp3", Random.Range(300, 1000));
             refTimer = Random.Range(intervalle.x, intervalle.y);
         }
 	}
 
     private void AddAnnoyingPopup()
     {
-        AddPopup(samplePopUp, "Annoying Popup");
+        //AddPopup(samplePopUp, "Annoying Popup");
     }
 
-    private void AddPopup(GameObject go, string popupName)
+    private void AddDownloadingPopup(string title, float size)
+    {
+        AddPopup(samplePopUp, "Downloading Popup", title, size);
+    }
+
+    private void AddPopup(GameObject go, string popupName, string windowName, float fileSize = 0)
     {
         GameObject pu = Instantiate(go, Vector3.zero, Quaternion.identity);
-        pu.GetComponent<PopupScript>().setDownloadVars(Random.Range(2, 10), Random.Range(10, 1000));
+        pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName);
         pu.name = popupName;
         pu.transform.SetParent(canvas.transform, false);
         RectTransform canvasTranform = canvas.transform as RectTransform;

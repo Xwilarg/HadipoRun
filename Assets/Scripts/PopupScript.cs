@@ -8,30 +8,54 @@ public class PopupScript : MonoBehaviour {
     public Image loadingBar;
     [Tooltip("Cancel button if exist")]
     public Button cancelButton;
+    [Tooltip("Window name")]
+    public Text windowName;
+    [Tooltip("Window content (text)")]
+    public Text windowContent;
+    [Tooltip("If download popup, download informations")]
+    public Text downloadInfos;
 
     private float currTime;
-    private float loadingTime = -1;
-    private int fileSize = -1;
+    private float loadingTime = 0;
+    private float fileSize = 0;
     private ScoreManager sm;
+    public string fileName { set; private get; }
+    private const float downloadSpeed = 98;
+    private float downloaded;
 
-    public void setDownloadVars(float loadingTime, int fileSize)
+    public void setDownloadVars(float fileSize, string windowName)
     {
-        this.loadingTime = loadingTime;
         this.fileSize = fileSize;
+        this.windowName.text = windowName;
+    }
+
+    public void setDownloadInfos()
+    {
+        if (downloadInfos != null)
+        {
+            downloadInfos.text = "Downloaded:	" + (downloaded / 1000).ToString("0.0") + " MB in " + currTime.ToString("0.0") + " seconds" + System.Environment.NewLine +
+                                 "Download to:	C:\\Users\\Kevin-du-84\\Music" + System.Environment.NewLine +
+                                 "Transfer rate: " + (downloadSpeed + Random.Range(-0.2f, 0.2f)).ToString("0.0") + " KB/s" + System.Environment.NewLine;
+        }
+        else
+            Assert.IsNotNull(downloadInfos);
     }
 
     private void Start()
     {
+        downloaded = 0.0f;
+        loadingTime = fileSize / downloadSpeed;
         currTime = 0.0f;
+        setDownloadInfos();
         sm = GameObject.Find("GameManager").GetComponent<ScoreManager>();
     }
 
     private void Update ()
     {
-        if (loadingBar != null)
+        currTime += Time.deltaTime;
+        if (loadingBar != null && Random.Range(0, 100) < 5)
         {
-            Assert.IsTrue(loadingTime > 0.0f && fileSize > 0, "Loading time and file size must be set as a positive value before first Update() call");
-            currTime += Time.deltaTime;
+            downloaded += downloadSpeed * Time.deltaTime;
             float prog = currTime / loadingTime;
             if (prog > 1.0f)
             {
@@ -44,6 +68,7 @@ public class PopupScript : MonoBehaviour {
             }
             else
                 loadingBar.rectTransform.localScale = new Vector2(prog, loadingBar.rectTransform.localScale.y);
+            setDownloadInfos();
         }
 	}
 

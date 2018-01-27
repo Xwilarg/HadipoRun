@@ -2,14 +2,14 @@
 
 public class ScoreManager : MonoBehaviour {
 
-    private int score;
+    private float score;
 
 	private void Start ()
     {
-        score = 0;
+        score = 0.0f;
 	}
 	
-	public void improveScore(int addScore)
+	public void improveScore(float addScore)
     {
         score += addScore;
     }
