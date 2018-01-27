@@ -22,4 +22,10 @@ public class PlayerController : MonoBehaviour {
 		rb.velocity = new Vector2(Mathf.Lerp(0, moveHorizontal * speed, 0.8f), 0.0f);
 		rb.AddForce (movement * speed);
 	}
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		if (other.gameObject.CompareTag ("Item")) {
+			Destroy (other.gameObject);
+		}
+	}
 }
