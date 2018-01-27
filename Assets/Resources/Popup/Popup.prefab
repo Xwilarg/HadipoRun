@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 224325445932544716}
   - component: {fileID: 222838928041071456}
   - component: {fileID: 114932119677278620}
+  - component: {fileID: 114795154842316244}
   m_Layer: 5
   m_Name: Drag Zone
   m_TagString: Untagged
@@ -549,6 +550,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114795154842316244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232752516002646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2857cc8ea87d6c4183ab291798585e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114810267413752976
 MonoBehaviour:
   m_ObjectHideFlags: 1
