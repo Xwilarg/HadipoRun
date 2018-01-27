@@ -19,10 +19,20 @@ public class PopUpManager : MonoBehaviour {
 
     private void Update ()
     {
-        timer += refTimer;
+        timer += Time.deltaTime;
+        if (timer > refTimer)
+        {
+            AddPopup();
+            refTimer = Random.Range(intervalle.x, intervalle.y);
+        }
 	    foreach (PopUp pu in popUps)
         {
             pu.Update();
         }
 	}
+
+    private void AddPopup()
+    {
+
+    }
 }

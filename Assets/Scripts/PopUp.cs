@@ -1,31 +1,37 @@
 ﻿using UnityEngine;
 
-public enum PopUpDownloadType
-{
-
-}
-
 public abstract class PopUp
 {
-    protected PopUp(Vector2 pos)
+    protected PopUp(GameObject go)
     {
         isInstantiate = false;
+        this.go = go;
     }
 
     public abstract void Update();
 
     public bool isInstantiate { set; get; }
+    private GameObject go { set; get; }
 }
 
-public class PopUpDownload : PopUp
+public class PopUpAnnoying : PopUp
 {
-    public PopUpDownload(Vector2 pos)
-        : base(pos)
+    public PopUpAnnoying(GameObject go)
+        : base(go)
     {
     }
 
     public override void Update()
+    { }
+}
+
+public class PopUpDownload : PopUp
+{
+    public PopUpDownload(GameObject go)
+        : base(go)
     {
-        throw new System.NotImplementedException();
     }
+
+    public override void Update()
+    { }
 }
