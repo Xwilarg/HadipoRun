@@ -4,14 +4,12 @@ public abstract class PopUp
 {
     protected PopUp(GameObject go)
     {
-        isInstantiate = false;
         this.go = go;
     }
 
     public abstract void Update();
-
-    public bool isInstantiate { set; get; }
-    private GameObject go { set; get; }
+    
+    public GameObject go { set; get; }
 }
 
 public class PopUpAnnoying : PopUp
