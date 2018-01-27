@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag ("Item")) {
-			popUp.AddDownloadingPopup ("Porn.mp5", Random.Range(200, 2000));
+		if (other.gameObject.CompareTag("Item")) {
+			popUp.AddDownloadingPopup(other.GetComponent<FileController>().title, Random.Range(200, 2000));
             Destroy (other.gameObject);
         }
     }
