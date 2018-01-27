@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212920543838072704}
   - component: {fileID: 61828328775631736}
   m_Layer: 0
-  m_Name: WallLeft
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,5 +108,5 @@ SpriteRenderer:
   m_Size: {x: 1.97, y: 1.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
