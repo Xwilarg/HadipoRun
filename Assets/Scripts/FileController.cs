@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Configuration;
 
 public class FileController : MonoBehaviour {
 
@@ -11,13 +12,20 @@ public class FileController : MonoBehaviour {
 	[Tooltip("Mouvement vertical du Ficher")]
 	[Range(0, -1)]
 	public float move_vertical;
+	public float size {set; private get;}
+	public string title { set; private get;}
 
 	private Rigidbody2D rb;
+	private TextMesh textMesh;
 
 	// Use this for initialization
 	void Start () 
 	{
-		rb = GetComponent<Rigidbody2D>();	
+		rb = GetComponent<Rigidbody2D>();
+		textMesh = GetComponentInChildren<TextMesh> ();
+		title = "audio.mp3";
+		textMesh.text = title;
+		size = Random.Range (1, 7);
 	}
 	
 	// Update is called once per frame
