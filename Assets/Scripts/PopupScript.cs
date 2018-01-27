@@ -19,7 +19,7 @@ public class PopupScript : MonoBehaviour {
     private float loadingTime = 0;
     private float fileSize = 0;
     public string fileName { set; private get; }
-    private const float downloadSpeed = 98;
+    private const float downloadSpeed = 1000;
     private float downloaded;
 
     public void setDownloadVars(float fileSize, string windowName)

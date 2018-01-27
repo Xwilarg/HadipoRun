@@ -9,8 +9,7 @@ public class FileController : MonoBehaviour {
 	public float speed;
 
 	public float size {private set; get;}
-	public string title { private set; get;}
-
+	public string title;
 	private Rigidbody2D rb;
 	private TextMesh textMesh;
 
@@ -25,7 +24,7 @@ public class FileController : MonoBehaviour {
         string[] extension = File.ReadAllLines("Assets/NameDatabase/extension.dat");
         title = first[Random.Range(0, first.Length)] + '_' + second[Random.Range(0, second.Length)] + '_' + third[Random.Range(0, third.Length)] + '.' + extension[Random.Range(0, extension.Length)];
 		textMesh.text = title;
-		size = Random.Range (1, 7);
+		size = Random.Range (1000, 3000);
 	}
 	
 	// Update is called once per frame

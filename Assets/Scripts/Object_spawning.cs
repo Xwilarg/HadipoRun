@@ -11,6 +11,7 @@ public class Object_spawning : MonoBehaviour
     [Tooltip("Time beetween spawn")]
 	[Range(0, 10)]
     public float SpawnDelay;
+
     float currTime;
     public bool left;
     public bool center;

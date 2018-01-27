@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("Item")) {
-			popUp.AddDownloadingPopup(other.GetComponent<FileController>().title, Random.Range(200, 2000));
+			FileController File = other.GetComponent<FileController> ();
+			popUp.AddDownloadingPopup (File.title, File.size);
             Destroy (other.gameObject);
         }
     }
