@@ -23,15 +23,14 @@ public class PopUpManager : MonoBehaviour {
     {
         Assert.IsTrue(intervalle.x > 0 && intervalle.y > 0, "Intervalle bounds must be greater than 0.");
         Assert.IsTrue(intervalle.x < intervalle.y, "Intervalle lower bound must be lower than highter bound.");
-        samplePopUp = Resources.Load("Popup/EmptyPopUp") as GameObject;
+        samplePopUp = Resources.Load("Popup/Popup") as GameObject;
         ResetTimer();
     }
 
     private void Update ()
     {
         timer += Time.deltaTime;
-        if (timer > refTimer)
-        {
+        if (timer > refTimer)        {
             AddAnnoyingPopup();
             refTimer = Random.Range(intervalle.x, intervalle.y);
         }
@@ -45,10 +44,9 @@ public class PopUpManager : MonoBehaviour {
     private void AddPopup(GameObject go, string popupName)
     {
         GameObject pu = Instantiate(go, Vector3.zero, Quaternion.identity);
+        pu.GetComponent<PopupScript>().setDownloadVars(Random.Range(2, 10), Random.Range(10, 1000));
         pu.name = popupName;
         pu.transform.SetParent(canvas.transform, false);
-        pu.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        RectTransform canvasPos = canvas.transform as RectTransform;
         ResetTimer();
     }
 }
