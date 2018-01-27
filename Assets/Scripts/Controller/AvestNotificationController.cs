@@ -16,7 +16,7 @@ public class AvestNotificationController : MonoBehaviour {
 		isOpen = false;
 		isShowing = false;
 		panelRectTransform = transform as RectTransform;
-		panelRectTransform.localPosition = new Vector2 (panelRectTransform.localPosition.x, yMin);
+		panelRectTransform.anchoredPosition = new Vector2 (panelRectTransform.anchoredPosition.x, yMin);
 
 	}
 
@@ -33,9 +33,9 @@ public class AvestNotificationController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isOpen) {
-			if (panelRectTransform.localPosition.y < yMax) {
-				panelRectTransform.localPosition = new Vector2 (panelRectTransform.localPosition.x, panelRectTransform.localPosition.y + Time.deltaTime * speed);
-			} if (isShowing) {
+			if (panelRectTransform.anchoredPosition.y < yMax) {
+				panelRectTransform.anchoredPosition = new Vector2 (panelRectTransform.anchoredPosition.x, panelRectTransform.anchoredPosition.y + Time.deltaTime * speed);
+			} else if (isShowing) {
 				currentDelay += Time.deltaTime;
 				if (currentDelay > delay) {
 					isShowing = false;
@@ -43,8 +43,8 @@ public class AvestNotificationController : MonoBehaviour {
 				}
 			}
 		} else {
-			if (panelRectTransform.localPosition.y > yMin) {
-				panelRectTransform.localPosition = new Vector2(panelRectTransform.localPosition.x, panelRectTransform.localPosition.y - Time.deltaTime * speed);
+			if (panelRectTransform.anchoredPosition.y > yMin) {
+				panelRectTransform.anchoredPosition = new Vector2(panelRectTransform.anchoredPosition.x, panelRectTransform.anchoredPosition.y - Time.deltaTime * speed);
 			}
 		}
 	}
