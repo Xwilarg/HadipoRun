@@ -2,16 +2,18 @@
 
 public class ItemSpawn : MonoBehaviour{
 
-	[Tooltip("Time beetween spawn")]
-	public float spawnDelay;
+	[Tooltip("Time min beetween spawn")]
+	public float spawnDelayMin;
+	[Tooltip("Time max beetween spawn")]
+	public float spawnDelayMax;
 	[Tooltip("Item to create spawn")]
 	public GameObject Item;
 
 	private float count;
 
-	public ItemSpawn () 
+	void Start() 
 	{
-		count = spawnDelay;
+		count = Random.Range(spawnDelayMin, spawnDelayMax);
 	}
 
 	public bool canBeInstantiate (float delay)
@@ -20,7 +22,7 @@ public class ItemSpawn : MonoBehaviour{
 
 		if (count <= 0) {
 			action = true;
-			count = spawnDelay;
+			count = Random.Range(spawnDelayMin, spawnDelayMax);;
 		} else
 			count -= delay;
 		return action;
