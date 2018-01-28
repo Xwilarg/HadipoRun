@@ -21,6 +21,8 @@ public class PopUpManager : MonoBehaviour
     public RectTransform canvas;
     [Tooltip("Avest popup")]
     public AvestNotificationController avest;
+    [Tooltip("Max Strikes")]
+    public uint maxStrikes = 3;
 
     private float conspicuousity;
     private uint seededCount;
@@ -36,6 +38,7 @@ public class PopUpManager : MonoBehaviour
     private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp;
     private Text conspicuousityText;
     private string[] infos;
+    private uint strikes;
 
     private void ResetTimer()
     {
@@ -61,6 +64,7 @@ public class PopUpManager : MonoBehaviour
         conspicuousityText = GameObject.Find("LeftCanvas").GetComponentInChildren<Text>();
         conspicuousity = 0.0f;
         seededCount = 0;
+        strikes = 0;
         ResetTimer();
     }
 
@@ -90,6 +94,19 @@ public class PopUpManager : MonoBehaviour
     public void wither()
     {
         --seededCount;
+    }
+
+    private void getTracked(float deltaTime)
+    {
+        if (seededCount == 0)
+            conspicuousity -= stealthFactor * Time.deltaTime;
+        else
+            conspicuousity += conspicuousityFactor * seededCount * Time.deltaTime;
+        if (conspicuousity > 1000)
+        {
+            strikes++;
+            conspicuousity = 0.0f;
+        }
     }
 
     public void GenericAdd(PopUpType put, string windowName, string windowContent)
