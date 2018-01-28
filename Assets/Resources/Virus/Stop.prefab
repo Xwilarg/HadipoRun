@@ -200,9 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd4c0ae80f72f745b3ee5dee5df94e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelayMin: 6
-  spawnDelayMax: 7
-  spawnPatern: 0
+  spawnDelayMin: 9
+  spawnDelayMax: 11
+  spawnPatern: 1
 --- !u!114 &114542090741234556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a320038e6a3c2da4e8f0b252cc7e2f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7.1
+  speed: 1.35
 --- !u!212 &212513692318704352
 SpriteRenderer:
   m_ObjectHideFlags: 1
