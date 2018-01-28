@@ -87,52 +87,6 @@ public class PopUpManager : MonoBehaviour
         }
     }
 
-//    public void GenericAdd(PopUpType put, string windowName = "", string windowContent = "", string additionalContent = "")
-//    {
-//        switch (put)
-//        {
-//            case PopUpType.ALERT:
-//				AddAlert(put, alertPopUp, "Error Popup", windowName, 0, windowContent);
-//                break;
-//            case PopUpType.COMFIRM:
-//                AddPopup(put, comfirmPopUp, "Confirm Popup", windowName, 0, windowContent);
-//                break;
-//            case PopUpType.INFO:
-//                AddPopup(put, infoPopUp, "Info Popup", windowName, 0, windowContent);
-//                break;
-//            case PopUpType.BIGERROR:
-//                AddPopup(put, bigErrorPopUp, "Big Error Popup", windowName, 0, windowContent, additionalContent);
-//                break;
-//            case PopUpType.BROWSER:
-//                int nb = Random.Range(0, 2);
-//                if (nb == 0)
-//                    penichPopUp = Resources.Load("Ads/IEWindowPeniche") as GameObject;
-//                else
-//                    penichPopUp = Resources.Load("Ads/IEWindowMoumoute") as GameObject;
-//                AddPopup(put, penichPopUp, "Browser Popup", windowName, 0, "");
-//                break;
-//            case PopUpType.SYS32:
-//                AddPopup(put, confirmDeletePopUp, "Delete Sys32 Popup", windowName, 0, windowContent);
-//                break;
-//            default:
-//                Assert.IsTrue(false, "Invalid arguments");
-//                break;
-//        }
-//    }
-
-//    public void GenericAdd(PopUpType put, string windowName, float fileSize)
-//    {
-//        switch (put)
-//        {
-//            case PopUpType.DOWNLOAD:
-//                AddPopup(put, downloadPopUp, "Downloading Popup", windowName, fileSize);
-//                break;
-//            default:
-//                Assert.IsTrue(false, "Invalid arguments");
-//                break;
-//        }
-//    }
-
 	public void AddDownload(string windowName, float fileSize)
 	{
 		GameObject go = InstanciateWindow (downloadPopUp, "Download Popup");
@@ -200,27 +154,4 @@ public class PopUpManager : MonoBehaviour
 		newWindowTranform.anchorMax = spawnPoint;
 		return newWindow;
 	}
-
-//   private void gameOver()
-//    {
-//        conspicuousityText.text = "Game Over!Game Over!Game Over!Game Over!";
-//    }
-
-    /* private void getTracked(float deltaTime)
-	{
-		print ("Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString ());
-		if ((conspicuousity > 1000) && (strikes < maxStrikes)) {
-			strikes++;
-			conspicuousity = 0.0f;
-			strikeImmunity = immunityLength;
-			if (strikes >= maxStrikes)
-				gameOver ();
-			else {
-				conspicuousityText.text = "Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString ();
-				PopupScript[] popups = GameObject.FindObjectsOfType<PopupScript> ();
-				foreach (PopupScript popup in popups)
-					popup.Cancel ();
-			}
-		}
-	}*/
 }
