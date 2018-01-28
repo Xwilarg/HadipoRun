@@ -15,8 +15,8 @@ public class ScoreManager : MonoBehaviour {
     public void increaseHadipoScore(float increase)
     {
         hadipoScore += increase;
-        hadipoSlider.value = hadipoScore * 100 / maxHadipoScore;
-        if (hadipoScore == 100)
+		hadipoSlider.value = (hadipoScore * 100) / maxHadipoScore;
+		if (hadipoScore >= maxHadipoScore)
         {
             // CALL CALLBACK FOR STRIKE
             hadipoScore = 0.0f;
