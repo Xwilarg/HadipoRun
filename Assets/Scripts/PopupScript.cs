@@ -97,11 +97,16 @@ public class PopupScript : MonoBehaviour {
 		ScoreManager sm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ScoreManager>();
         sm.improveScore(fileSize);
         Destroy(gameObject);
-        pm.wither();
     }
 
     public void Cancel()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (seeding)
+            pm.wither();
     }
 }

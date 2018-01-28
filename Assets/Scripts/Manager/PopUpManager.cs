@@ -23,6 +23,8 @@ public class PopUpManager : MonoBehaviour
     public AvestNotificationController avest;
     [Tooltip("Max Strikes")]
     public uint maxStrikes = 3;
+    [Tooltip("Immunity immediately after Strike.")]
+    public float immunityLength = 5.0f;
 
     private float conspicuousity;
     private uint seededCount;
@@ -38,6 +40,7 @@ public class PopUpManager : MonoBehaviour
     private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp;
     private Text conspicuousityText;
     private uint strikes;
+    private float strikeImmunity;
 
     private void ResetTimer()
     {
@@ -63,6 +66,7 @@ public class PopUpManager : MonoBehaviour
         conspicuousity = 0.0f;
         seededCount = 0;
         strikes = 0;
+        strikeImmunity = 0.0f;
         ResetTimer();
     }
 
@@ -74,7 +78,7 @@ public class PopUpManager : MonoBehaviour
             string[] infos = File.ReadAllLines("Assets/NameDatabase/infos.dat");
             GenericAdd(PopUpType.INFO, "Info", infos[Random.Range(0, infos.Length)]);
         }
-        conspicuousityText.text = System.String.Concat("Seeding: ", conspicuousity);
+        getTracked(Time.deltaTime);
         timerAvest += Time.deltaTime;
         if (timerAvest > refTimerAvest)
         {
@@ -93,16 +97,35 @@ public class PopUpManager : MonoBehaviour
         --seededCount;
     }
 
+    private void gameOver()
+    {
+        conspicuousityText.text = "Game Over!Game Over!Game Over!Game Over!";
+    }
+
     private void getTracked(float deltaTime)
     {
-        if (seededCount == 0)
+        print("Getting Tracked");
+        if (strikeImmunity > 0.0f)
+            strikeImmunity -= deltaTime;
+        else if (seededCount == 0)
             conspicuousity -= stealthFactor * Time.deltaTime;
         else
             conspicuousity += conspicuousityFactor * seededCount * Time.deltaTime;
-        if (conspicuousity > 1000)
+        print("Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString());
+        if ((conspicuousity > 1000) && (strikes < maxStrikes))
         {
             strikes++;
             conspicuousity = 0.0f;
+            strikeImmunity = immunityLength;
+            if (strikes >= maxStrikes)
+                gameOver();
+            else
+            {
+                conspicuousityText.text = "Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString();
+                PopupScript[] popups = GameObject.FindObjectsOfType<PopupScript>();
+                foreach (PopupScript popup in popups)
+                    popup.Cancel();
+            }
         }
     }
 
@@ -152,9 +175,6 @@ public class PopUpManager : MonoBehaviour
         RectTransform puTranform = pu.transform as RectTransform;
         Vector2 minRatio = new Vector2((puTranform.rect.width / 2) / canvas.rect.width, (puTranform.rect.height / 2) / canvas.rect.height);
         Vector2 spawnPoint = new Vector2(Random.Range(minRatio.x, 1 - minRatio.x), Random.Range(minRatio.y, 1 - minRatio.y));
-        string debugMsg = "Pu: " + puTranform.rect.width.ToString() + "; " + puTranform.rect.height.ToString() + "\n";
-        debugMsg += "canvas: " + canvas.rect.width.ToString() + "; " + canvas.rect.height.ToString() + "\n";
-        print(debugMsg);
         puTranform.anchorMin = spawnPoint;
         puTranform.anchorMax = spawnPoint;
         ResetTimer();
