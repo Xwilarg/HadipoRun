@@ -17,6 +17,9 @@ public class DownloadController : MonoBehaviour {
 	public Text downloadInfos;
 	[Tooltip("If big error popup, detailled informations")]
 	public Text bigErrorInfos;
+    [Tooltip("Time in sec before starting to trigger Hadipo")]
+    [Range(0.1f, 10.0f)]
+    public float hadipoRef;
 
 	private float currTime;
 	private float loadingTime = 0;
@@ -27,6 +30,7 @@ public class DownloadController : MonoBehaviour {
 	private ScoreManager scoreManager = null;
 	private bool seeding;
 	private float seedingSince;
+    private float currHadipo;
 
 	public void setDownloadVars(float fileSize, string windowName)
 	{
@@ -52,6 +56,7 @@ public class DownloadController : MonoBehaviour {
 		setDownloadInfos();
 		seeding = false;
 		seedingSince = 0.0f;
+        currHadipo = 0.0f;
 	}
 
 	private void Update ()
@@ -77,6 +82,16 @@ public class DownloadController : MonoBehaviour {
 				loadingBar.rectTransform.localScale = new Vector2(prog, loadingBar.rectTransform.localScale.y);
 			setDownloadInfos();
 		}
+        else if (loadingBar == null)
+        {
+            currHadipo += Time.deltaTime;
+            if (currHadipo > hadipoRef)
+            {
+                if (scoreManager == null)
+                    scoreManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ScoreManager>();
+                scoreManager.increaseHadipoScore(Time.deltaTime);
+            }
+        }
 		if (((currTime / loadingTime) > 1.0f) && !seeding)
 		{
 			seedingSince += Time.deltaTime;

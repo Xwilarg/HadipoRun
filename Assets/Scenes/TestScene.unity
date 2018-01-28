@@ -120,6 +120,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1333439183}
     m_Modifications:
+    - target: {fileID: 114335276527711240, guid: 52d1c2b309b432e4ab56c938065ee18b,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224178371741275772, guid: 52d1c2b309b432e4ab56c938065ee18b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -213,7 +218,7 @@ Prefab:
     - target: {fileID: 224464552521097146, guid: 52d1c2b309b432e4ab56c938065ee18b,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.185
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224464552521097146, guid: 52d1c2b309b432e4ab56c938065ee18b,
         type: 2}
@@ -223,7 +228,22 @@ Prefab:
     - target: {fileID: 114335276527711240, guid: 52d1c2b309b432e4ab56c938065ee18b,
         type: 2}
       propertyPath: m_Value
-      value: 185
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114335276527711240, guid: 52d1c2b309b432e4ab56c938065ee18b,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114335276527711240, guid: 52d1c2b309b432e4ab56c938065ee18b,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114335276527711240, guid: 52d1c2b309b432e4ab56c938065ee18b,
+        type: 2}
+      propertyPath: m_MaxValue
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52d1c2b309b432e4ab56c938065ee18b, type: 2}
@@ -1291,6 +1311,12 @@ Prefab:
     - {fileID: 212571265028216354, guid: 969b1095f4aa7294b84c415ab34f1686, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 969b1095f4aa7294b84c415ab34f1686, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2038438219 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114335276527711240, guid: 52d1c2b309b432e4ab56c938065ee18b,
+    type: 2}
+  m_PrefabInternal: {fileID: 168105616}
+  m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &2077724122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,5 +1487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931c85217dea2244395af5ee0d7d42af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hadipoSlider: {fileID: 2038438219}
+  maxHadipoScore: 50
   conspicuousityFactor: 0
   stealthFactor: 0

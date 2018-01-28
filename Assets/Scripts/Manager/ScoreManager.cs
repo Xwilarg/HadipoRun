@@ -8,6 +8,16 @@ public class ScoreManager : MonoBehaviour {
     private float score;
     private string nickname;
 
+    private float hadipoScore;
+    public Slider hadipoSlider;
+    public float maxHadipoScore;
+
+    public void increaseHadipoScore(float increase)
+    {
+        hadipoScore += increase;
+        hadipoSlider.value = hadipoScore * 100 / maxHadipoScore;
+    }
+
 	//Hadipo tracking
 	private float conspicuousity;
 	private uint seededCount;
@@ -47,7 +57,7 @@ public class ScoreManager : MonoBehaviour {
 
 	private void Update()
 	{
-		conspicuousityText.text = System.String.Concat("Seeding: ", conspicuousity);
+		//conspicuousityText.text = System.String.Concat("Seeding: ", conspicuousity);
 	}
 
 	//End Hadipo tracking
@@ -55,7 +65,7 @@ public class ScoreManager : MonoBehaviour {
 	private void Start ()
     {
         score = 0.0f;
-
+        hadipoScore = 0.0f;
 		//Hadipo tracking
 		conspicuousityText = GameObject.Find("LeftCanvas").GetComponentInChildren<Text>();
 		conspicuousity = 0.0f;
