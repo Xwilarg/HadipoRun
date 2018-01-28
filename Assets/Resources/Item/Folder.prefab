@@ -186,8 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcf4110ca4c460439a68e47ef63640a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeMax: 10000
-  sizeMin: 8000
+  sizeMax: 100000
+  sizeMin: 50000
   title: FBI_Folder
 --- !u!114 &114777495396892462
 MonoBehaviour:
