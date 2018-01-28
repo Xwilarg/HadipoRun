@@ -103,7 +103,7 @@ public class PopUpManager : MonoBehaviour
         GameObject pu = Instantiate(go, Vector3.zero, Quaternion.identity);
         pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName);
         pu.name = popupName;
-        pu.transform.SetParent(canvas.transform, false);
+        pu.transform.SetParent(canvas, false);
         RectTransform puTranform = pu.transform as RectTransform;
         Vector2 minRatio = new Vector2((puTranform.rect.width / 2) / canvas.rect.width, (puTranform.rect.height / 2) / canvas.rect.height);
         Vector2 spawnPoint = new Vector2(Random.Range(minRatio.x, 1 - minRatio.x), Random.Range(minRatio.y, 1 - minRatio.y));
