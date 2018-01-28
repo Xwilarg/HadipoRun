@@ -11,8 +11,10 @@ public class AvestNotificationController : MonoBehaviour {
 	private bool isShowing;
 	private RectTransform panelRectTransform;
 	private float currentDelay = 0.0f;
-	// Use this for initialization
+    private PopUpManager pum;
+
 	void Start () {
+        pum = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PopUpManager>();
 		isOpen = false;
 		isShowing = false;
 		panelRectTransform = transform as RectTransform;
@@ -56,4 +58,9 @@ public class AvestNotificationController : MonoBehaviour {
 	void Close() {
 		isOpen = false;
 	}
+
+    public void AvastPopup()
+    {
+        pum.GenericAdd(PopUpType.INFO, "Avest! information", "A new version of virus database has been installed.");
+    }
 }
