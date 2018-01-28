@@ -20,12 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4583528306851048}
   - component: {fileID: 61660083996933004}
-  - component: {fileID: 114331959986002480}
-  - component: {fileID: 212129232294865562}
+  - component: {fileID: 114328719947524856}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -36,8 +35,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346889220696876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
-  m_LocalScale: {x: 5.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: -11.99, y: 5.28, z: 0}
+  m_LocalScale: {x: 4.114687, y: 0.1937498, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -67,7 +66,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &114331959986002480
+--- !u!114 &114328719947524856
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,54 +74,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1346889220696876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b45e7b159f63bd4fb28b7962ce0f736, type: 3}
+  m_Script: {fileID: 11500000, guid: f5bda0756e66045478c51c493ee7dfdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawnable:
-  - {fileID: 1687919283588290, guid: f038116eabfd9724eb8e1bcd5122a182, type: 2}
-  zone: 0
-  SpawnDelay: 0.4
---- !u!212 &212129232294865562
-SpriteRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1346889220696876}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6a16a341dd3376d4ab786090eaecb6ef, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.97, y: 1.93}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  ItemList:
+  - {fileID: 1687919283588290, guid: 081ad1b911061f64cb80c8058416d370, type: 2}
+  - {fileID: 1687919283588290, guid: a21ffd51655665745976aa740db37697, type: 2}
+  - {fileID: 1500898606922444, guid: 49a1d35d694dfeb44a895134eee3bad5, type: 2}
+  - {fileID: 1500898606922444, guid: 94ea80c0ccd3f734aaffff56b421a8db, type: 2}
+  - {fileID: 1630192024187236, guid: edf3921ba455f0d47b41c442ed76e612, type: 2}
