@@ -6,6 +6,8 @@ public class ItemSpawn : MonoBehaviour{
 	public float spawnDelayMin;
 	[Tooltip("Time max beetween spawn")]
 	public float spawnDelayMax;
+	[Tooltip("Item to create spawn")]
+	public GameObject Item;
 
 	private float count;
 
