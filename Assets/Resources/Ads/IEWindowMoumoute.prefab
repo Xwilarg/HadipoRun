@@ -167,7 +167,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Enlargez votre p\xE9niche !!! Facile et gratuit ! - Microsoft Internet
+  m_Text: "L'\xE9diteur de texte le plus utilis\xE9 au Groenland !!! - Microsoft Internet
     Explorer"
 --- !u!114 &114224172490718594
 MonoBehaviour:
@@ -201,7 +201,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: http://www.enlargezvotrepeniche.com/
+  m_Text: http://moumoute-emacs.org/download.htm
 --- !u!114 &114280549923243776
 MonoBehaviour:
   m_ObjectHideFlags: 1
