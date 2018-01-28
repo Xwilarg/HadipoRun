@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("Item")) {
-			FileController File = other.GetComponent<FileController> ();
-			popUp.AddDownloadingPopup (File.title, File.size);
+			FileDescription File = other.GetComponent<FileDescription> ();
+			popUp.AddDownloadingPopup (File.title, File.sizeFile);
             Destroy (other.gameObject);
         }
     }
