@@ -23,17 +23,17 @@ public class FileDescription : MonoBehaviour {
             string[] second = File.ReadAllLines("Assets/NameDatabase/second.dat");
             string[] third = File.ReadAllLines("Assets/NameDatabase/third.dat");
             string[] extension = File.ReadAllLines("Assets/NameDatabase/extension.dat");
-            textMesh.text = first[Random.Range(0, first.Length)] + '_' + second[Random.Range(0, second.Length)] + '_' + third[Random.Range(0, third.Length)] + '.' + extension[Random.Range(0, extension.Length)];
+            string finalText = first[Random.Range(0, first.Length)] + '_' + second[Random.Range(0, second.Length)] + '_' + third[Random.Range(0, third.Length)] + '.' + extension[Random.Range(0, extension.Length)];
+            textMesh.text = finalText;
+            title = finalText;
         }
         else
         {
             string[] fbi = File.ReadAllLines("Assets/NameDatabase/fbi.dat");
-            textMesh.text = fbi[Random.Range(0, fbi.Length)] + ".rar";
+            string finalText = fbi[Random.Range(0, fbi.Length)] + ".rar";
+            textMesh.text = finalText;
+            title = finalText;
         }
         sizeFile = Random.Range (sizeMin, sizeMax);
-	}
-	
-	// Update is called once per frame
-	void Update () {
 	}
 }
