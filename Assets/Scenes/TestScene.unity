@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 3
-  speed: 1
+  speed: 60
   yMin: -160
   yMax: 40
 --- !u!1 &1371871659
