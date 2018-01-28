@@ -302,6 +302,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114328719947524856, guid: a6f0dc839cdeda34a8f0391f1044c5a4,
+        type: 2}
+      propertyPath: ItemList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4583528306851048, guid: a6f0dc839cdeda34a8f0391f1044c5a4, type: 2}
       propertyPath: m_LocalPosition.x
       value: -11.99
@@ -352,9 +357,29 @@ Prefab:
       propertyPath: SpawnDelay
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114328719947524856, guid: a6f0dc839cdeda34a8f0391f1044c5a4,
+        type: 2}
+      propertyPath: ItemList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1687919283588290, guid: 081ad1b911061f64cb80c8058416d370,
+        type: 2}
+    - target: {fileID: 114328719947524856, guid: a6f0dc839cdeda34a8f0391f1044c5a4,
+        type: 2}
+      propertyPath: ItemList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1687919283588290, guid: a21ffd51655665745976aa740db37697,
+        type: 2}
+    - target: {fileID: 114328719947524856, guid: a6f0dc839cdeda34a8f0391f1044c5a4,
+        type: 2}
+      propertyPath: ItemList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1500898606922444, guid: 0dd9ce9e18319e540a67c388eb44565b,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 212129232294865562, guid: a6f0dc839cdeda34a8f0391f1044c5a4, type: 2}
     - {fileID: 114331959986002480, guid: a6f0dc839cdeda34a8f0391f1044c5a4, type: 2}
+    - {fileID: 114194582572898326, guid: a6f0dc839cdeda34a8f0391f1044c5a4, type: 2}
+    - {fileID: 114115399151627170, guid: a6f0dc839cdeda34a8f0391f1044c5a4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a6f0dc839cdeda34a8f0391f1044c5a4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &477093321
@@ -1139,23 +1164,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2077724122}
---- !u!1 &2079266255 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1346889220696876, guid: a6f0dc839cdeda34a8f0391f1044c5a4,
-    type: 2}
-  m_PrefabInternal: {fileID: 449020197}
---- !u!114 &2079266257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2079266255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5bda0756e66045478c51c493ee7dfdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemList: []
 --- !u!1 &2113516511
 GameObject:
   m_ObjectHideFlags: 0
