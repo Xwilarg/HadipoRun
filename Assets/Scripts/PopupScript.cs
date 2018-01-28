@@ -16,6 +16,8 @@ public class PopupScript : MonoBehaviour {
     public Text windowContent;
     [Tooltip("If download popup, download informations")]
     public Text downloadInfos;
+    [Tooltip("If big error popup, detailled informations")]
+    public Text bigErrorInfos;
 
     private float currTime;
     private float loadingTime = 0;
@@ -27,7 +29,7 @@ public class PopupScript : MonoBehaviour {
     private bool seeding;
     public float seedingSince;
 
-    public void setDownloadVars(float fileSize, string windowName, string windowContent)
+    public void setDownloadVars(float fileSize, string windowName, string windowContent, string bigErrorInfos)
     {
         this.fileSize = fileSize;
         this.windowName.text = windowName;
@@ -35,6 +37,8 @@ public class PopupScript : MonoBehaviour {
             this.windowContent.text = windowContent;
         else
             this.windowContent.text = windowName + this.windowContent.text;
+        if (bigErrorInfos != null)
+            this.bigErrorInfos.text = bigErrorInfos;
     }
 
     public void setDownloadInfos()

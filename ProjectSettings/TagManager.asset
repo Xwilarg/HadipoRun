@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameManager
   - Item
+  - Virus
   layers:
   - Default
   - TransparentFX

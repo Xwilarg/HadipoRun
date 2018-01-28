@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114391909951034288}
   m_Layer: 0
   m_Name: Bat
-  m_TagString: Item
+  m_TagString: Virus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a320038e6a3c2da4e8f0b252cc7e2f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.17
+  speed: 7.1
 --- !u!212 &212513692318704352
 SpriteRenderer:
   m_ObjectHideFlags: 1

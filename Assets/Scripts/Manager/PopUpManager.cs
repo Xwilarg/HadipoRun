@@ -8,7 +8,8 @@ public enum PopUpType
     DOWNLOAD,
     ALERT,
     COMFIRM,
-    INFO
+    INFO,
+    BIGERROR
 }
 
 public class PopUpManager : MonoBehaviour
@@ -37,8 +38,9 @@ public class PopUpManager : MonoBehaviour
     private float refTimer;
     private float timerAvest;
     private float refTimerAvest;
-    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp;
+    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp, bigErrorPopUp;
     private Text conspicuousityText;
+    private string[] infos;
     private uint strikes;
     private float strikeImmunity;
 
@@ -56,12 +58,14 @@ public class PopUpManager : MonoBehaviour
 
     private void Start()
     {
+        infos = File.ReadAllLines("Assets/NameDatabase/infos.dat");
         Assert.IsTrue(intervalle.x > 0 && intervalle.y > 0 && inAvest.x > 0 && inAvest.y > 0, "Intervalle bounds must be greater than 0.");
         Assert.IsTrue(intervalle.x < intervalle.y && inAvest.x < inAvest.y, "Intervalle lower bound must be lower than highter bound.");
         downloadPopUp = Resources.Load("Popup/DownloadPopup") as GameObject;
         alertPopUp = Resources.Load("Popup/AlertPopup") as GameObject;
         comfirmPopUp = Resources.Load("Popup/ConfirmDeletePopUp") as GameObject;
         infoPopUp = Resources.Load("Popup/InfoPopUp") as GameObject;
+        bigErrorPopUp = Resources.Load("Popup/AlertPopUpBig") as GameObject;
         conspicuousityText = GameObject.Find("LeftCanvas").GetComponentInChildren<Text>();
         conspicuousity = 0.0f;
         seededCount = 0;
@@ -74,11 +78,9 @@ public class PopUpManager : MonoBehaviour
     {
         timer += Time.deltaTime;
         if (timer > refTimer)
-        {
-            string[] infos = File.ReadAllLines("Assets/NameDatabase/infos.dat");
             GenericAdd(PopUpType.INFO, "Info", infos[Random.Range(0, infos.Length)]);
         }
-        getTracked(Time.deltaTime);
+        conspicuousityText.text = System.String.Concat("Seeding: ", conspicuousity);
         timerAvest += Time.deltaTime;
         if (timerAvest > refTimerAvest)
         {
@@ -97,11 +99,6 @@ public class PopUpManager : MonoBehaviour
         --seededCount;
     }
 
-    private void gameOver()
-    {
-        conspicuousityText.text = "Game Over!Game Over!Game Over!Game Over!";
-    }
-
     private void getTracked(float deltaTime)
     {
         print("Getting Tracked");
@@ -111,25 +108,14 @@ public class PopUpManager : MonoBehaviour
             conspicuousity -= stealthFactor * Time.deltaTime;
         else
             conspicuousity += conspicuousityFactor * seededCount * Time.deltaTime;
-        print("Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString());
-        if ((conspicuousity > 1000) && (strikes < maxStrikes))
+        if (conspicuousity > 1000)
         {
             strikes++;
             conspicuousity = 0.0f;
-            strikeImmunity = immunityLength;
-            if (strikes >= maxStrikes)
-                gameOver();
-            else
-            {
-                conspicuousityText.text = "Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString();
-                PopupScript[] popups = GameObject.FindObjectsOfType<PopupScript>();
-                foreach (PopupScript popup in popups)
-                    popup.Cancel();
-            }
         }
     }
 
-    public void GenericAdd(PopUpType put, string windowName, string windowContent)
+    public void GenericAdd(PopUpType put, string windowName, string windowContent, string additionalContent = "")
     {
         switch (put)
         {
@@ -141,6 +127,9 @@ public class PopUpManager : MonoBehaviour
                 break;
             case PopUpType.INFO:
                 AddPopup(put, infoPopUp, "Info Popup", windowName, 0, windowContent);
+                break;
+            case PopUpType.BIGERROR:
+                AddPopup(put, bigErrorPopUp, "Big Error Popup", windowName, 0, windowContent, additionalContent);
                 break;
             default:
                 Assert.IsTrue(false, "Invalid arguments");
@@ -166,10 +155,10 @@ public class PopUpManager : MonoBehaviour
         //AddPopup(samplePopUp, "Annoying Popup");
     }
 
-    private void AddPopup(PopUpType pot, GameObject go, string popupName, string windowName, float fileSize = 0, string content = null)
+    private void AddPopup(PopUpType pot, GameObject go, string popupName, string windowName, float fileSize = 0, string content = null, string additionalContent = null)
     {
         GameObject pu = Instantiate(go, Vector3.zero, Quaternion.identity);
-        pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName, content);
+        pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName, content, additionalContent);
         pu.name = popupName;
         pu.transform.SetParent(canvas, false);
         RectTransform puTranform = pu.transform as RectTransform;
@@ -180,3 +169,27 @@ public class PopUpManager : MonoBehaviour
         ResetTimer();
     }
 }
+        }
+        getTracked(Time.deltaTime);
+    private void gameOver()
+    {
+        conspicuousityText.text = "Game Over!Game Over!Game Over!Game Over!";
+    }
+
+    private void getTracked(float deltaTime)
+        print("Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString());
+        if ((conspicuousity > 1000) && (strikes < maxStrikes))
+        {
+            strikes++;
+            conspicuousity = 0.0f;
+            strikeImmunity = immunityLength;
+            if (strikes >= maxStrikes)
+                gameOver();
+            else
+            {
+                conspicuousityText.text = "Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString();
+                PopupScript[] popups = GameObject.FindObjectsOfType<PopupScript>();
+                foreach (PopupScript popup in popups)
+                    popup.Cancel();
+            }
+        }
