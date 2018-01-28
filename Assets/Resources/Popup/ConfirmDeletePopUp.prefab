@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 114477069634536098}
   - component: {fileID: 114152484575812028}
   m_Layer: 5
-  m_Name: ConfirmDeletePopUp
+  m_Name: ConfirmDeletePopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
