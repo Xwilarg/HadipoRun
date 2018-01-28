@@ -28,8 +28,6 @@ public class DownloadController : MonoBehaviour {
 	private const float downloadSpeed = 1000;
 	private float downloaded;
 	private ScoreManager scoreManager = null;
-	private bool seeding;
-	private float seedingSince;
     private float currHadipo;
 
 	public void setDownloadVars(float fileSize, string windowName)
@@ -54,8 +52,6 @@ public class DownloadController : MonoBehaviour {
 		loadingTime = fileSize / downloadSpeed;
 		currTime = 0.0f;
 		setDownloadInfos();
-		seeding = false;
-		seedingSince = 0.0f;
         currHadipo = 0.0f;
 	}
 
@@ -92,17 +88,6 @@ public class DownloadController : MonoBehaviour {
                 scoreManager.increaseHadipoScore(Time.deltaTime);
             }
         }
-		if (((currTime / loadingTime) > 1.0f) && !seeding)
-		{
-			seedingSince += Time.deltaTime;
-			if (seedingSince > 3.0f)
-			{
-				seeding = true;
-				if (scoreManager == null)
-					scoreManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ScoreManager>();
-				scoreManager.sprout();
-			}
-		}
 	}
 
 	public void Accept()
@@ -115,13 +100,6 @@ public class DownloadController : MonoBehaviour {
 	public void Cancel()
 	{
 		Destroy(gameObject);
-	}
-
-	private void OnDestroy()
-	{
-		if (seeding)
-			scoreManager.wither();
-		scoreManager = null;
 	}
 
 	public void EndGame()
