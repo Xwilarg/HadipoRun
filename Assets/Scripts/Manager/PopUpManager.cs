@@ -39,9 +39,10 @@ public class PopUpManager : MonoBehaviour {
     private void Update ()
     {
         timer += Time.deltaTime;
-        if (timer > refTimer)        {
+        if (timer > refTimer)
+        {
 			AddAnnoyingPopup();
-            refTimer = Random.Range(intervalle.x, intervalle.y);
+            ResetTimer();
         }
 	}
 
@@ -67,6 +68,5 @@ public class PopUpManager : MonoBehaviour {
         Vector2 spawnPoint = new Vector2(Random.Range(minRatio.x, 1 - minRatio.x), Random.Range(minRatio.y, 1 - minRatio.y));
         puTranform.anchorMin = spawnPoint;
         puTranform.anchorMax = spawnPoint;
-        ResetTimer();
     }
 }
