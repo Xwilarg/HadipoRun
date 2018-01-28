@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Target_movement : MonoBehaviour {
-    [Tooltip("Gameobject to target")]
-    public GameObject Target;
+	private GameObject Target;
+
     [Tooltip("Speed"), Range(0, 15)]
     public float speed;
     [Tooltip("When re-target the player (min)")]
@@ -21,6 +21,7 @@ public class Target_movement : MonoBehaviour {
         TargetTime = Random.Range(minReTarget, maxReTarget);
         rb = GetComponent<Rigidbody2D>();
         currTime = TargetTime;
+		Target = GameObject.FindGameObjectWithTag ("Player"); 
 
         Debug.Log(rb);
         Debug.Log(TargetTime);
