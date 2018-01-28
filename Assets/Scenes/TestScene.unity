@@ -432,6 +432,11 @@ Prefab:
       propertyPath: InvulnerabilityTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 61248501434139210, guid: 0456faaa5ec1c924cadd94013f026275,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0456faaa5ec1c924cadd94013f026275, type: 2}
   m_IsPrefabParent: 0
