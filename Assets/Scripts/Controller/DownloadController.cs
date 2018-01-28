@@ -34,7 +34,8 @@ public class DownloadController : MonoBehaviour {
 	{
 		this.fileSize = fileSize;
 		this.windowName.text = windowName;
-	}
+        windowContent.text = windowName + " from T404.to";
+    }
 
 	public void setDownloadInfos()
 	{
