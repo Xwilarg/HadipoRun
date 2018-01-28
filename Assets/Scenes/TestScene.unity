@@ -601,6 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03cdd3ce2befa641a15f95ab49b5d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 3
   speed: 1
   yMin: -160
   yMax: 40
@@ -1080,8 +1081,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intervalle: {x: 1, y: 3}
-  inAvest: {x: 1, y: 3}
-  canvas: {fileID: 1423879592}
+  inAvest: {x: 50, y: 70}
+  canvas: {fileID: 2113516512}
+  avest: {fileID: 1155680338}
 --- !u!114 &2145577888
 MonoBehaviour:
   m_ObjectHideFlags: 0
