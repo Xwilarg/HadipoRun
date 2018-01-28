@@ -40,8 +40,8 @@ GameObject:
   - component: {fileID: 61877116926536132}
   - component: {fileID: 50247565655234254}
   - component: {fileID: 114309542194859248}
-  - component: {fileID: 114777495396892462}
   - component: {fileID: 114279321056388804}
+  - component: {fileID: 114117098141431514}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Item
@@ -176,6 +176,18 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &114117098141431514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687919283588290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9afe2d7b19ff54dae6d9e32233e51b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2.62
 --- !u!114 &114279321056388804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDelayMin: 5
   spawnDelayMax: 6
+  spawnPatern: 0
 --- !u!114 &114309542194859248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,18 +216,6 @@ MonoBehaviour:
   sizeMax: 3000
   sizeMin: 500
   title: Audio
---- !u!114 &114777495396892462
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687919283588290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a320038e6a3c2da4e8f0b252cc7e2f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
 --- !u!212 &212549008228034092
 SpriteRenderer:
   m_ObjectHideFlags: 1

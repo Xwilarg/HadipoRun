@@ -201,7 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelayMin: 7
-  spawnDelayMax: 9
+  spawnDelayMax: 10
+  spawnPatern: 1
 --- !u!114 &114542090741234556
 MonoBehaviour:
   m_ObjectHideFlags: 1
