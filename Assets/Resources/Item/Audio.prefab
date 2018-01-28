@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sizeMax: 3000
-  sizeMin: 1000
-  title: Audio.png
+  sizeMin: 500
+  title: Audio
 --- !u!114 &114777495396892462
 MonoBehaviour:
   m_ObjectHideFlags: 1
