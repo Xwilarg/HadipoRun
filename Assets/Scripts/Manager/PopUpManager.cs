@@ -86,7 +86,7 @@ public class PopUpManager : MonoBehaviour
 
     private void AddAnnoyingPopup()
     {
-        //AddPopup(samplePopUp, "Annoying Popup");
+        AddPopup(samplePopUp, "Annoying Popup", "Annoying Popup", 1024);
     }
 
     public void AddDownloadingPopup(string title, float size)
