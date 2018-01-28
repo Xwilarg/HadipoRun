@@ -26,8 +26,11 @@ public class FileDescription : MonoBehaviour {
             textMesh.text = first[Random.Range(0, first.Length)] + '_' + second[Random.Range(0, second.Length)] + '_' + third[Random.Range(0, third.Length)] + '.' + extension[Random.Range(0, extension.Length)];
         }
         else
-		    textMesh.text = title;
-		sizeFile = Random.Range (sizeMin, sizeMax);
+        {
+            string[] fbi = File.ReadAllLines("Assets/NameDatabase/fbi.dat");
+            textMesh.text = fbi[Random.Range(0, fbi.Length)] + ".rar";
+        }
+        sizeFile = Random.Range (sizeMin, sizeMax);
 	}
 	
 	// Update is called once per frame
