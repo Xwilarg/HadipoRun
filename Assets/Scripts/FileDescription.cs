@@ -15,7 +15,7 @@ public class FileDescription : MonoBehaviour {
 	public float sizeFile{ private set; get;}
 
 	void Start () {
-		textMesh = GetComponent<TextMesh> ();
+		textMesh = GetComponentInChildren<TextMesh> ();
 		textMesh.text = title;
 		sizeFile = Random.Range (sizeMin, sizeMax);
 	}
