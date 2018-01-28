@@ -23,6 +23,7 @@ public class PopupScript : MonoBehaviour {
     public string fileName { set; private get; }
     private const float downloadSpeed = 1000;
     private float downloaded;
+    private PopUpManager pm;
 
     public void setDownloadVars(float fileSize, string windowName)
     {
@@ -49,6 +50,8 @@ public class PopupScript : MonoBehaviour {
         loadingTime = fileSize / downloadSpeed;
         currTime = 0.0f;
         setDownloadInfos();
+        pm = GameObject.Find("GameManager").GetComponent<PopUpManager>();
+        pm.sprout();
     }
 
     private void Update ()
@@ -86,5 +89,10 @@ public class PopupScript : MonoBehaviour {
     public void Cancel()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        pm.wither();
     }
 }
