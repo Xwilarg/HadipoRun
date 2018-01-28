@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour {
         }
 		if (other.gameObject.CompareTag ("Virus"))
         {
-            for (int i = 0; i < 20; i++)
+            int max = Random.Range(3, 9);
+            for (int i = 0; i < max; i++)
                 popUp.GenericAdd(PopUpType.ALERT, "Error", "ふたなり-" + i + ".dll was not found.");
             Destroy (other.gameObject);
 		}
