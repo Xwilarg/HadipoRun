@@ -7,17 +7,27 @@ public class PopUpManager : MonoBehaviour {
     public Vector2 intervalle;
     [Tooltip("Intervalle before next avest popup spawn in seconds")]
     public Vector2 inAvest;
-    [Tooltip("Canvas")]
-    public Canvas canvas;
+    [Tooltip("Parent containing popups")]
+    public RectTransform canvas;
+    [Tooltip("Avest popup")]
+    public AvestNotificationController avest;
     
     private float timer;
     private float refTimer;
+    private float timerAvest;
+    private float refTimerAvest;
     private GameObject samplePopUp;
 
     private void ResetTimer()
     {
         timer = 0.0f;
         refTimer = Random.Range(intervalle.x, intervalle.y);
+    }
+
+    private void ResetTimerAvest()
+    {
+        timerAvest = 0.0f;
+        refTimerAvest = Random.Range(inAvest.x, inAvest.y);
     }
 
     private void Start()
@@ -36,7 +46,13 @@ public class PopUpManager : MonoBehaviour {
 			AddAnnoyingPopup();
             ResetTimer();
         }
-	}
+        timerAvest += Time.deltaTime;
+        if (timerAvest > refTimerAvest)
+        {
+            avest.Show();
+            ResetTimerAvest();
+        }
+    }
 
     private void AddAnnoyingPopup()
     {
@@ -54,9 +70,8 @@ public class PopUpManager : MonoBehaviour {
         pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName);
         pu.name = popupName;
         pu.transform.SetParent(canvas.transform, false);
-        RectTransform canvasTranform = canvas.transform as RectTransform;
         RectTransform puTranform = pu.transform as RectTransform;
-        Vector2 minRatio = new Vector2((puTranform.rect.width / 2) / canvasTranform.rect.width, (puTranform.rect.height / 2) / canvasTranform.rect.height);
+        Vector2 minRatio = new Vector2((puTranform.rect.width / 2) / canvas.rect.width, (puTranform.rect.height / 2) / canvas.rect.height);
         Vector2 spawnPoint = new Vector2(Random.Range(minRatio.x, 1 - minRatio.x), Random.Range(minRatio.y, 1 - minRatio.y));
         puTranform.anchorMin = spawnPoint;
         puTranform.anchorMax = spawnPoint;
