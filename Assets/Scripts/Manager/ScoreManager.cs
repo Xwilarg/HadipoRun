@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour {
@@ -7,9 +8,60 @@ public class ScoreManager : MonoBehaviour {
     private float score;
     private string nickname;
 
+	//Hadipo tracking
+	private float conspicuousity;
+	private uint seededCount;
+	[Tooltip("Conspicuousity grows by x * n, n being the number of seeded downloads.")]
+	public float conspicuousityFactor;
+	[Tooltip("Conspicuousity falls by x per seconds if no downloads are seeded.")]
+	public float stealthFactor;
+
+	private Text conspicuousityText;
+	private uint strikes;
+	private float strikeImmunity;
+
+	public void sprout()
+	{
+		++seededCount;
+	}
+
+	public void wither()
+	{
+		--seededCount;
+	}
+
+	private void getTracked(float deltaTime)
+	{
+		if (strikeImmunity > 0.0f)
+			strikeImmunity -= deltaTime;
+		else if (seededCount == 0)
+			conspicuousity -= stealthFactor * Time.deltaTime;
+		else
+			conspicuousity += conspicuousityFactor * seededCount * Time.deltaTime;
+		if (conspicuousity > 1000)
+		{
+			strikes++;
+			conspicuousity = 0.0f;
+		}
+	}
+
+	private void Update()
+	{
+		conspicuousityText.text = System.String.Concat("Seeding: ", conspicuousity);
+	}
+
+	//End Hadipo tracking
+
 	private void Start ()
     {
         score = 0.0f;
+
+		//Hadipo tracking
+		conspicuousityText = GameObject.Find("LeftCanvas").GetComponentInChildren<Text>();
+		conspicuousity = 0.0f;
+		seededCount = 0;
+		strikes = 0;
+		strikeImmunity = 0.0f;
 	}
 	
 	public void improveScore(float addScore)
@@ -17,8 +69,20 @@ public class ScoreManager : MonoBehaviour {
         score += addScore;
     }
 
-    public void gameOverBSOD()
-    {
+	public void gameOverHadipo()
+	{
+		gameOverBSOD (); //TODO Differentiate endings
+	}
+
+	public void gameOverBSOD()
+	{
+		gameOver ();
+		Screen.fullScreen = true;
+		SceneManager.LoadSceneAsync("GameOver");
+	}
+    
+	public void gameOver()
+	{
         if (!File.Exists("bestScores.dat"))
         {
             for (int i = 0; i < 10; i++)
@@ -44,7 +108,5 @@ public class ScoreManager : MonoBehaviour {
             }
         }
         File.WriteAllLines("bestScores.dat", allLines);
-        Screen.fullScreen = true;
-        SceneManager.LoadSceneAsync("GameOver");
     }
 }

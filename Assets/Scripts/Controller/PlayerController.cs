@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("Item")) {
 			FileDescription File = other.GetComponent<FileDescription> ();
-			popUp.GenericAdd (PopUpType.DOWNLOAD, File.title, File.sizeFile);
+			popUp.AddDownload (File.title, File.sizeFile);
             Destroy (other.gameObject);
         }
 		if (other.gameObject.CompareTag ("Virus") && timeCount <= 0)
@@ -52,22 +52,22 @@ public class PlayerController : MonoBehaviour {
             {
                 int max = Random.Range(3, 9);
                 for (int i = 0; i < max; i++)
-                    popUp.GenericAdd(PopUpType.ALERT, "Error", "ふたなり-" + i + ".dll was not found.");
+                    popUp.AddAlert("Error", "ふたなり-" + i + ".dll was not found.");
             }
             else if (virusType == 1)
             {
                 string errors = "";
                 for (int i = 0; i < 4; i++)
                     errors += bigErrors[Random.Range(0, bigErrors.Length)] + System.Environment.NewLine;
-                popUp.GenericAdd(PopUpType.BIGERROR, "Fatal Error", "An error occured while executing the application", errors);
+				popUp.AddBigError("Fatal Error", "An error occured while executing the application", errors);
             }
             else if (virusType == 2)
             {
-                popUp.GenericAdd(PopUpType.BROWSER, "Internet Explorer 4.0ad");
+				popUp.AddBrowser();
             }
             else
             {
-                popUp.GenericAdd(PopUpType.SYS32, "Confirm Folder Delete", "Are you sure you want to delete 'C:\\System32\\' and all of its content?");
+                popUp.AddSys32("Confirm Folder Delete", "Are you sure you want to delete 'C:\\System32\\' and all of its content?");
             }
 			timeCount = InvulnerabilityTime;
             Destroy (other.gameObject);

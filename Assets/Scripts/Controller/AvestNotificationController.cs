@@ -61,6 +61,6 @@ public class AvestNotificationController : MonoBehaviour {
 
     public void AvastPopup()
     {
-        pum.GenericAdd(PopUpType.INFO, "Avest! information", "A new version of virus database has been installed.");
+		pum.AddInfo("Avest! information", "A new version of virus database has been installed.");
     }
 }

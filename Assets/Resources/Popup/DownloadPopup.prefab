@@ -106,8 +106,9 @@ GameObject:
   - component: {fileID: 224659875711473728}
   - component: {fileID: 222728338366877764}
   - component: {fileID: 114120427231359286}
-  - component: {fileID: 114983242387826032}
   - component: {fileID: 114367734407246190}
+  - component: {fileID: 114740441463455720}
+  - component: {fileID: 114983242387826032}
   m_Layer: 5
   m_Name: DownloadPopup
   m_TagString: Untagged
@@ -509,6 +510,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114740441463455720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1293047238384982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe51e07daaa9dd428a8424987f37076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114882397901639322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -593,7 +605,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' from T404.to'
+  m_Text: machin.mp3 from T404.to
 --- !u!114 &114950801825317062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -638,6 +650,8 @@ MonoBehaviour:
   windowName: {fileID: 114605590820908304}
   windowContent: {fileID: 114916596841940596}
   downloadInfos: {fileID: 114595930653673950}
+  bigErrorInfos: {fileID: 0}
+  seedingSince: 0
 --- !u!222 &222165387088935450
 CanvasRenderer:
   m_ObjectHideFlags: 1
