@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour {
 
     private float score;
     private string nickname;
+	private hadistrike strikes;
 
     private float hadipoScore;
     public Slider hadipoSlider;
@@ -18,7 +19,9 @@ public class ScoreManager : MonoBehaviour {
 		hadipoSlider.value = (hadipoScore * 100) / maxHadipoScore;
 		if (hadipoScore >= maxHadipoScore)
         {
-            // CALL CALLBACK FOR STRIKE
+			strikes.UpdateStrike ();
+			if (strikes.strikes >= 3)
+				gameOverHadipo ();
             hadipoScore = 0.0f;
         }
     }
@@ -27,6 +30,7 @@ public class ScoreManager : MonoBehaviour {
     {
         score = 0.0f;
         hadipoScore = 0.0f;
+		strikes = GetComponent<hadistrike> ();
 	}
 
     public float getScore()
