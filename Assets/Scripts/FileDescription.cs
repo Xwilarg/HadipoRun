@@ -19,17 +19,17 @@ public class FileDescription : MonoBehaviour {
 		textMesh = GetComponentInChildren<TextMesh> ();
         if (title == "Audio")
         {
-            string[] first = File.ReadAllLines("Assets/NameDatabase/first.dat");
-            string[] second = File.ReadAllLines("Assets/NameDatabase/second.dat");
-            string[] third = File.ReadAllLines("Assets/NameDatabase/third.dat");
-            string[] extension = File.ReadAllLines("Assets/NameDatabase/extension.dat");
+            string[] first = File.ReadAllLines("NameDatabase/first.dat");
+            string[] second = File.ReadAllLines("NameDatabase/second.dat");
+            string[] third = File.ReadAllLines("NameDatabase/third.dat");
+            string[] extension = File.ReadAllLines("NameDatabase/extension.dat");
             string finalText = first[Random.Range(0, first.Length)] + '_' + second[Random.Range(0, second.Length)] + '_' + third[Random.Range(0, third.Length)] + '.' + extension[Random.Range(0, extension.Length)];
             textMesh.text = finalText;
             title = finalText;
         }
         else
         {
-            string[] fbi = File.ReadAllLines("Assets/NameDatabase/fbi.dat");
+            string[] fbi = File.ReadAllLines("NameDatabase/fbi.dat");
             string finalText = fbi[Random.Range(0, fbi.Length)] + ".rar";
             textMesh.text = finalText;
             title = finalText;

@@ -59,7 +59,7 @@ public class PopUpManager : MonoBehaviour
 
     private void Start()
     {
-        infos = File.ReadAllLines("Assets/NameDatabase/infos.dat");
+        infos = File.ReadAllLines("NameDatabase/infos.dat");
         Assert.IsTrue(intervalle.x > 0 && intervalle.y > 0 && inAvest.x > 0 && inAvest.y > 0, "Intervalle bounds must be greater than 0.");
         Assert.IsTrue(intervalle.x < intervalle.y && inAvest.x < inAvest.y, "Intervalle lower bound must be lower than highter bound.");
         downloadPopUp = Resources.Load("Popup/DownloadPopup") as GameObject;

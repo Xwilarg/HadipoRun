@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody2D>();
 		popUp = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<PopUpManager>();
-        bigErrors = File.ReadAllLines("Assets/NameDatabase/errorsExplanations.dat");
+        bigErrors = File.ReadAllLines("NameDatabase/errorsExplanations.dat");
 	}
 
 	void FixedUpdate ()

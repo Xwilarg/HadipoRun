@@ -15,6 +15,5 @@ public class ScoreManager : MonoBehaviour {
     }
 
 	public void gameOverBSOD() {
-		
 	}
 }
