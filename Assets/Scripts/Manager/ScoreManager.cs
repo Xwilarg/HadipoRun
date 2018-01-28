@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour {
     private float hadipoScore;
     public Slider hadipoSlider;
     public float maxHadipoScore;
+	public Text Score;
 
     public void increaseHadipoScore(float increase)
     {
@@ -41,6 +42,7 @@ public class ScoreManager : MonoBehaviour {
 	public void improveScore(float addScore)
     {
         score += addScore;
+		Score.text = "Downloaded: " +(score / 1000).ToString ("0.0") + " Mb";
         Debug.Log(score);
     }
 
