@@ -20,7 +20,7 @@ public class AvestNotificationController : MonoBehaviour {
 
 	}
 
-	void Show() {
+	public void Show() {
 		if (isShowing) {
 			return;
 		} else {
