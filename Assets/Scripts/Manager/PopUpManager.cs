@@ -37,6 +37,7 @@ public class PopUpManager : MonoBehaviour
     private float refTimerAvest;
     private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp;
     private Text conspicuousityText;
+    private string[] infos;
     private uint strikes;
 
     private void ResetTimer()
@@ -53,6 +54,7 @@ public class PopUpManager : MonoBehaviour
 
     private void Start()
     {
+        infos = File.ReadAllLines("Assets/NameDatabase/infos.dat");
         Assert.IsTrue(intervalle.x > 0 && intervalle.y > 0 && inAvest.x > 0 && inAvest.y > 0, "Intervalle bounds must be greater than 0.");
         Assert.IsTrue(intervalle.x < intervalle.y && inAvest.x < inAvest.y, "Intervalle lower bound must be lower than highter bound.");
         downloadPopUp = Resources.Load("Popup/DownloadPopup") as GameObject;
@@ -70,10 +72,11 @@ public class PopUpManager : MonoBehaviour
     {
         timer += Time.deltaTime;
         if (timer > refTimer)
-        {
-            string[] infos = File.ReadAllLines("Assets/NameDatabase/infos.dat");
             GenericAdd(PopUpType.INFO, "Info", infos[Random.Range(0, infos.Length)]);
-        }
+        if (seededCount == 0)
+            conspicuousity -= stealthFactor * Time.deltaTime;
+        else
+            conspicuousity += conspicuousityFactor * seededCount * Time.deltaTime;
         conspicuousityText.text = System.String.Concat("Seeding: ", conspicuousity);
         timerAvest += Time.deltaTime;
         if (timerAvest > refTimerAvest)
