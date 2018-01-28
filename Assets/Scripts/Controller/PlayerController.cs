@@ -32,5 +32,8 @@ public class PlayerController : MonoBehaviour {
 			popUp.GenericAdd (PopUpType.DOWNLOAD, File.title, File.sizeFile);
             Destroy (other.gameObject);
         }
+		if (other.gameObject.CompareTag ("Virus")) {
+			Destroy (other.gameObject);
+		}
     }
 }
