@@ -22,10 +22,6 @@ public class Target_movement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         currTime = TargetTime;
 		Target = GameObject.FindGameObjectWithTag ("Player"); 
-
-        Debug.Log(rb);
-        Debug.Log(TargetTime);
-        Debug.Log(currTime);
 	}
 	
 	// Update is called once per frame
