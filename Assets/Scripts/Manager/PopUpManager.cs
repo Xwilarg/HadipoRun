@@ -139,8 +139,7 @@ public class PopUpManager : MonoBehaviour
     private void AddPopup(PopUpType pot, GameObject go, string popupName, string windowName, float fileSize = 0, string content = null)
     {
         GameObject pu = Instantiate(go, Vector3.zero, Quaternion.identity);
-        if (pot == PopUpType.DOWNLOAD)
-            pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName);
+        pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName, content);
         pu.name = popupName;
         pu.transform.SetParent(canvas, false);
         RectTransform puTranform = pu.transform as RectTransform;

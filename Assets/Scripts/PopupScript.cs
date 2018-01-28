@@ -25,11 +25,14 @@ public class PopupScript : MonoBehaviour {
     private float downloaded;
     private PopUpManager pm;
 
-    public void setDownloadVars(float fileSize, string windowName)
+    public void setDownloadVars(float fileSize, string windowName, string windowContent)
     {
         this.fileSize = fileSize;
         this.windowName.text = windowName;
-        windowContent.text = windowName + windowContent.text;
+        if (windowContent != null)
+            this.windowContent.text = windowContent;
+        else
+            this.windowContent.text = windowName + this.windowContent.text;
     }
 
     public void setDownloadInfos()
