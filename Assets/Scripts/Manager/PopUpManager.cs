@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 
-public class PopUpManager : MonoBehaviour {
+public class PopUpManager : MonoBehaviour
+{
 
     [Tooltip("Intervalle before next popup spam spawn in seconds")]
     public Vector2 intervalle;
@@ -12,25 +13,33 @@ public class PopUpManager : MonoBehaviour {
     public RectTransform canvas;
     [Tooltip("Avest popup")]
     public AvestNotificationController avest;
-    
+
+    private float conspicuousity;
+    private uint seededCount;
+    [Tooltip("Conspicuousity grows by pow(cons, n), n being the number of seeded downloads.")]
+    public float conspicuousityFactor;
+    [Tooltip("Conspicuousity falls by x per seconds if no downloads are seeded.")]
+    public float stealthFactor;
+
     private float timer;
     private float refTimer;
     private float timerAvest;
     private float refTimerAvest;
     private GameObject samplePopUp;
+    private Text conspicuousityText;
 
     private void ResetTimer()
     {
         timer = 0.0f;
         refTimer = Random.Range(intervalle.x, intervalle.y);
     }
- 
+
     private void ResetTimerAvest()
     {
         timerAvest = 0.0f;
         refTimerAvest = Random.Range(inAvest.x, inAvest.y);
     }
- 
+
     private void Start()
     {
         Assert.IsTrue(intervalle.x > 0 && intervalle.y > 0 && inAvest.x > 0 && inAvest.y > 0, "Intervalle bounds must be greater than 0.");
@@ -42,12 +51,12 @@ public class PopUpManager : MonoBehaviour {
         ResetTimer();
     }
 
-    private void Update ()
+    private void Update()
     {
         timer += Time.deltaTime;
         if (timer > refTimer)
         {
-			AddAnnoyingPopup();
+            AddAnnoyingPopup();
             ResetTimer();
         }
         if (seededCount == 0)
@@ -61,13 +70,22 @@ public class PopUpManager : MonoBehaviour {
             conspicuousityText.text = "Seeding: ";
         }
         conspicuousityText.text = System.String.Concat(conspicuousityText.text, conspicuousity.ToString());
-    }
-    timerAvest += Time.deltaTime;
+        timerAvest += Time.deltaTime;
         if (timerAvest > refTimerAvest)
         {
             avest.Show();
             ResetTimerAvest();
-}
+        }
+    }
+
+    public void sprout()
+    {
+        ++seededCount;
+    }
+
+    public void wither()
+    {
+        --seededCount;
     }
 
     private void AddAnnoyingPopup()
@@ -92,5 +110,4 @@ public class PopUpManager : MonoBehaviour {
         puTranform.anchorMin = spawnPoint;
         puTranform.anchorMax = spawnPoint;
     }
-}
 }
