@@ -29,8 +29,11 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("Item")) {
 			FileDescription File = other.GetComponent<FileDescription> ();
-			popUp.AddDownloadingPopup (File.title, File.sizeFile);
+			popUp.GenericAdd (PopUpType.DOWNLOAD, File.title, File.sizeFile);
             Destroy (other.gameObject);
         }
+		if (other.gameObject.CompareTag ("Virus")) {
+			Destroy (other.gameObject);
+		}
     }
 }

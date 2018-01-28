@@ -1,10 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
+using System.IO;
+
+public enum PopUpType
+{
+    DOWNLOAD,
+    ALERT,
+    COMFIRM,
+    INFO
+}
 
 public class PopUpManager : MonoBehaviour
 {
-
     [Tooltip("Intervalle before next popup spam spawn in seconds")]
     public Vector2 intervalle;
     [Tooltip("Intervalle before next avest popup spawn in seconds")]
@@ -25,7 +33,7 @@ public class PopUpManager : MonoBehaviour
     private float refTimer;
     private float timerAvest;
     private float refTimerAvest;
-    private GameObject samplePopUp;
+    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp;
     private Text conspicuousityText;
 
     private void ResetTimer()
@@ -44,9 +52,10 @@ public class PopUpManager : MonoBehaviour
     {
         Assert.IsTrue(intervalle.x > 0 && intervalle.y > 0 && inAvest.x > 0 && inAvest.y > 0, "Intervalle bounds must be greater than 0.");
         Assert.IsTrue(intervalle.x < intervalle.y && inAvest.x < inAvest.y, "Intervalle lower bound must be lower than highter bound.");
-        samplePopUp = Resources.Load("Popup/DownloadPopup") as GameObject;
-        samplePopUp = Resources.Load("Popup/AlertPopup") as GameObject;
-        samplePopUp = Resources.Load("Popup/DownloadPopup") as GameObject;
+        downloadPopUp = Resources.Load("Popup/DownloadPopup") as GameObject;
+        alertPopUp = Resources.Load("Popup/AlertPopup") as GameObject;
+        comfirmPopUp = Resources.Load("Popup/ConfirmDeletePopUp") as GameObject;
+        infoPopUp = Resources.Load("Popup/InfoPopUp") as GameObject;
         conspicuousityText = GameObject.Find("LeftCanvas").GetComponentInChildren<Text>();
         conspicuousity = 0.0f;
         seededCount = 0;
@@ -58,8 +67,8 @@ public class PopUpManager : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > refTimer)
         {
-            AddAnnoyingPopup();
-            ResetTimer();
+            string[] infos = File.ReadAllLines("Assets/NameDatabase/infos.dat");
+            GenericAdd(PopUpType.INFO, "Info", infos[Random.Range(0, infos.Length)]);
         }
         if (seededCount == 0)
             conspicuousity -= stealthFactor * Time.deltaTime;
@@ -84,20 +93,47 @@ public class PopUpManager : MonoBehaviour
         --seededCount;
     }
 
-    private void AddAnnoyingPopup()
+    public void GenericAdd(PopUpType put, string windowName, string windowContent)
     {
-        AddPopup(samplePopUp, "Annoying Popup", "Annoying Popup", 1024);
+        switch (put)
+        {
+            case PopUpType.ALERT:
+                AddPopup(put, alertPopUp, "Error Popup", windowName, 0, windowContent);
+                break;
+            case PopUpType.COMFIRM:
+                AddPopup(put, comfirmPopUp, "Confirm Popup", windowName, 0, windowContent);
+                break;
+            case PopUpType.INFO:
+                AddPopup(put, infoPopUp, "Info Popup", windowName, 0, windowContent);
+                break;
+            default:
+                Assert.IsTrue(false, "Invalid arguments");
+                break;
+        }
     }
 
-    public void AddDownloadingPopup(string title, float size)
+    public void GenericAdd(PopUpType put, string windowName, float fileSize)
     {
-        AddPopup(samplePopUp, "Downloading Popup", title, size);
+        switch (put)
+        {
+            case PopUpType.DOWNLOAD:
+                AddPopup(put, downloadPopUp, "Downloading Popup", windowName, fileSize);
+                break;
+            default:
+                Assert.IsTrue(false, "Invalid arguments");
+                break;
+        }
     }
 
-    private void AddPopup(GameObject go, string popupName, string windowName, float fileSize = 0)
+    private void AddAnnoyingPopup(string title, string content)
+    {
+        //AddPopup(samplePopUp, "Annoying Popup");
+    }
+
+    private void AddPopup(PopUpType pot, GameObject go, string popupName, string windowName, float fileSize = 0, string content = null)
     {
         GameObject pu = Instantiate(go, Vector3.zero, Quaternion.identity);
-        pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName);
+        pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName, content);
         pu.name = popupName;
         pu.transform.SetParent(canvas, false);
         RectTransform puTranform = pu.transform as RectTransform;
@@ -108,5 +144,6 @@ public class PopUpManager : MonoBehaviour
         print(debugMsg);
         puTranform.anchorMin = spawnPoint;
         puTranform.anchorMax = spawnPoint;
+        ResetTimer();
     }
 }

@@ -27,11 +27,14 @@ public class PopupScript : MonoBehaviour {
     private bool seeding;
     public float seedingSince;
 
-    public void setDownloadVars(float fileSize, string windowName)
+    public void setDownloadVars(float fileSize, string windowName, string windowContent)
     {
         this.fileSize = fileSize;
         this.windowName.text = windowName;
-        windowContent.text = windowName + windowContent.text;
+        if (windowContent != null)
+            this.windowContent.text = windowContent;
+        else
+            this.windowContent.text = windowName + this.windowContent.text;
     }
 
     public void setDownloadInfos()
@@ -42,8 +45,6 @@ public class PopupScript : MonoBehaviour {
                                  "Download to:	C:\\Users\\Kevin-du-84\\Music" + System.Environment.NewLine +
                                  "Transfer rate: " + (downloadSpeed + Random.Range(-0.2f, 0.2f)).ToString("0.0") + " KB/s" + System.Environment.NewLine;
         }
-        else
-            Assert.IsNotNull(downloadInfos);
     }
 
     private void Start()
