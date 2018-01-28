@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 61724917747482620}
   - component: {fileID: 114104594939037204}
   - component: {fileID: 114190103466665360}
-  - component: {fileID: 114122066273244510}
+  - component: {fileID: 114107038217639754}
   m_Layer: 0
-  m_Name: Bat 1
+  m_Name: Bat
   m_TagString: Virus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alertLevel: 0
   title: Bat
---- !u!114 &114122066273244510
+--- !u!114 &114107038217639754
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -197,9 +197,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1630192024187236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b07fdd6a83b52e4097319bfe6117d6a, type: 3}
+  m_Script: {fileID: 11500000, guid: a320038e6a3c2da4e8f0b252cc7e2f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 7.09
 --- !u!114 &114190103466665360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,8 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd4c0ae80f72f745b3ee5dee5df94e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelayMin: 6
-  spawnDelayMax: 7
+  spawnDelayMin: 8
+  spawnDelayMax: 10
   spawnPatern: 0
 --- !u!212 &212197632636192674
 SpriteRenderer:
