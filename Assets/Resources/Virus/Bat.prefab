@@ -212,8 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd4c0ae80f72f745b3ee5dee5df94e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelayMin: 8
-  spawnDelayMax: 10
+  spawnDelayMin: 6
+  spawnDelayMax: 8
   scoring: 2000
   spawnPatern: 0
 --- !u!212 &212197632636192674
