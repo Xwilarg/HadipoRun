@@ -190,4 +190,4 @@ public class PopUpManager : MonoBehaviour
 			}
 		}
 	}*/
-}
+}

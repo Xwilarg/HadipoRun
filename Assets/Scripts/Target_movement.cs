@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target_mov : MonoBehaviour {
+public class Target_movement : MonoBehaviour {
     [Tooltip("Gameobject to target")]
     public GameObject Target;
     [Tooltip("Speed"), Range(0, 15)]
