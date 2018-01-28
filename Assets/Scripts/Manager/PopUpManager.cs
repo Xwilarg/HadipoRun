@@ -9,15 +9,25 @@ public class PopUpManager : MonoBehaviour {
     public Vector2 inAvest;
     [Tooltip("Parent containing popups")]
     public RectTransform canvas;
+    [Tooltip("Avest popup")]
+    public AvestNotificationController avest;
     
     private float timer;
     private float refTimer;
+    private float timerAvest;
+    private float refTimerAvest;
     private GameObject samplePopUp;
 
     private void ResetTimer()
     {
         timer = 0.0f;
         refTimer = Random.Range(intervalle.x, intervalle.y);
+    }
+
+    private void ResetTimerAvest()
+    {
+        timerAvest = 0.0f;
+        refTimerAvest = Random.Range(inAvest.x, inAvest.y);
     }
 
     private void Start()
@@ -36,7 +46,13 @@ public class PopUpManager : MonoBehaviour {
 			AddAnnoyingPopup();
             ResetTimer();
         }
-	}
+        timerAvest += Time.deltaTime;
+        if (timerAvest > refTimerAvest)
+        {
+            avest.Show();
+            ResetTimerAvest();
+        }
+    }
 
     private void AddAnnoyingPopup()
     {
