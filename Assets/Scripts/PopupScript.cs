@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class PopupScript : MonoBehaviour {
@@ -115,5 +114,11 @@ public class PopupScript : MonoBehaviour {
     {
         if (seeding)
             pm.wither();
+    }
+
+    public void EndGame()
+    {
+        ScoreManager sm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ScoreManager>();
+        sm.gameOverBSOD();
     }
 }
