@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114750452436801520}
   - component: {fileID: 114877203017752088}
   - component: {fileID: 114869760845379030}
+  - component: {fileID: 114464486100290224}
   m_Layer: 5
   m_Name: IEWindowPeniche
   m_TagString: Untagged
@@ -286,6 +287,25 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Enlargez votre p\xE9niche !!! Facile et gratuit ! - Microsoft Internet
     Explorer"
+--- !u!114 &114464486100290224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328261673876322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0ee140dd7eb90408e596042b5c5019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBar: {fileID: 0}
+  cancelButton: {fileID: 114163937104334408}
+  crossButton: {fileID: 0}
+  windowName: {fileID: 114429915329185888}
+  windowContent: {fileID: 0}
+  downloadInfos: {fileID: 0}
+  bigErrorInfos: {fileID: 0}
+  seedingSince: 0
 --- !u!114 &114622729635324078
 MonoBehaviour:
   m_ObjectHideFlags: 1

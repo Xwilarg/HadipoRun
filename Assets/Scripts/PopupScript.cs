@@ -32,11 +32,14 @@ public class PopupScript : MonoBehaviour {
     public void setDownloadVars(float fileSize, string windowName, string windowContent, string bigErrorInfos)
     {
         this.fileSize = fileSize;
-        this.windowName.text = windowName;
-        if (windowContent != null)
-            this.windowContent.text = windowContent;
-        else
-            this.windowContent.text = windowName + this.windowContent.text;
+        if (this.windowContent != null)
+        {
+            this.windowName.text = windowName;
+            if (windowContent != null)
+                this.windowContent.text = windowContent;
+            else
+                this.windowContent.text = windowName + this.windowContent.text;
+        }
         if (bigErrorInfos != null)
             this.bigErrorInfos.text = bigErrorInfos;
     }

@@ -36,19 +36,23 @@ public class PlayerController : MonoBehaviour {
         }
 		if (other.gameObject.CompareTag ("Virus"))
         {
-            int virusType = Random.Range(0, 2);
+            int virusType = Random.Range(0, 3);
             if (virusType == 0)
             {
                 int max = Random.Range(3, 9);
                 for (int i = 0; i < max; i++)
                     popUp.GenericAdd(PopUpType.ALERT, "Error", "ふたなり-" + i + ".dll was not found.");
             }
-            else
+            else if (virusType == 1)
             {
                 string errors = "";
                 for (int i = 0; i < 4; i++)
                     errors += bigErrors[Random.Range(0, bigErrors.Length)] + System.Environment.NewLine;
                 popUp.GenericAdd(PopUpType.BIGERROR, "Fatal Error", "An error occured while executing the application", errors);
+            }
+            else
+            {
+                popUp.GenericAdd(PopUpType.BROWSER, "Internet Explorer 4.0ad");
             }
             Destroy (other.gameObject);
 		}
