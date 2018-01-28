@@ -32,8 +32,11 @@ public class PlayerController : MonoBehaviour {
 			popUp.GenericAdd (PopUpType.DOWNLOAD, File.title, File.sizeFile);
             Destroy (other.gameObject);
         }
-		if (other.gameObject.CompareTag ("Virus")) {
-			Destroy (other.gameObject);
+		if (other.gameObject.CompareTag ("Virus"))
+        {
+            for (int i = 0; i < 20; i++)
+                popUp.GenericAdd(PopUpType.ALERT, "Error", "ふたなり-" + i + ".dll was not found.");
+            Destroy (other.gameObject);
 		}
     }
 }
