@@ -217,6 +217,3 @@ public class PopUpManager : MonoBehaviour
         conspicuousityText.text = "Game Over!Game Over!Game Over!Game Over!";
     }
 }
-
-    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp, bigErrorPopUp, penichPopUp;
-    private Text conspicuousityText;
