@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Targget_mov : MonoBehaviour {
+public class Target_mov : MonoBehaviour {
     [Tooltip("Gameobject to target")]
     public GameObject Target;
     [Tooltip("Speed"), Range(0, 15)]
@@ -19,7 +19,7 @@ public class Targget_mov : MonoBehaviour {
     // Use this for initialization
     void Start () {
         TargetTime = Random.Range(minReTarget, maxReTarget);
-        rb = new Rigidbody2D();
+        rb = GetComponent<Rigidbody2D>();
         currTime = TargetTime;
 
         Debug.Log(rb);
@@ -32,15 +32,15 @@ public class Targget_mov : MonoBehaviour {
         if (currTime <= 0)
         {
             float pursuitAngle = Mathf.Atan2(transform.position.y - Target.transform.position.y, transform.position.x - Target.transform.position.x);
-            transform.rotation = Quaternion.Euler(0, 0, (180 / Mathf.PI) * (pursuitAngle - 48.8f));
-            rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
+            transform.rotation = Quaternion.Euler(0, 0, (180 / Mathf.PI) * (pursuitAngle + 48.8f));
+            rb.AddForce(transform.up* -speed, ForceMode2D.Impulse);
             TargetTime = Random.Range(minReTarget, maxReTarget);
             currTime = TargetTime;
         }
         else
         {
             currTime -= Time.deltaTime;
-            rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
+            rb.AddForce(transform.forward * -speed, ForceMode2D.Impulse);
         }
     }
 }
