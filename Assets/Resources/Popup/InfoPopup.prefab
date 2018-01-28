@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 222642647912443042}
   - component: {fileID: 114536736381462702}
   - component: {fileID: 114723981885164502}
+  - component: {fileID: 114884942206901938}
   m_Layer: 5
   m_Name: InfoPopup
   m_TagString: Untagged
@@ -277,7 +278,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114884942206901938}
         m_MethodName: Cancel
         m_Mode: 1
         m_Arguments:
@@ -467,6 +468,23 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114884942206901938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1588634412149634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0ee140dd7eb90408e596042b5c5019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBar: {fileID: 0}
+  cancelButton: {fileID: 114165813314607320}
+  crossButton: {fileID: 0}
+  windowName: {fileID: 114910103790450752}
+  windowContent: {fileID: 114368131213924320}
+  downloadInfos: {fileID: 0}
 --- !u!114 &114910103790450752
 MonoBehaviour:
   m_ObjectHideFlags: 1

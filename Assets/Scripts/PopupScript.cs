@@ -40,8 +40,6 @@ public class PopupScript : MonoBehaviour {
                                  "Download to:	C:\\Users\\Kevin-du-84\\Music" + System.Environment.NewLine +
                                  "Transfer rate: " + (downloadSpeed + Random.Range(-0.2f, 0.2f)).ToString("0.0") + " KB/s" + System.Environment.NewLine;
         }
-        else
-            Assert.IsNotNull(downloadInfos);
     }
 
     private void Start()
