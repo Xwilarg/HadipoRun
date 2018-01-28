@@ -24,6 +24,8 @@ public class PopupScript : MonoBehaviour {
     private const float downloadSpeed = 1000;
     private float downloaded;
     private PopUpManager pm;
+    private bool seeding;
+    public float seedingSince;
 
     public void setDownloadVars(float fileSize, string windowName, string windowContent)
     {
@@ -52,7 +54,8 @@ public class PopupScript : MonoBehaviour {
         currTime = 0.0f;
         setDownloadInfos();
         pm = GameObject.Find("GameManager").GetComponent<PopUpManager>();
-        pm.sprout();
+        seeding = false;
+        seedingSince = 0.0f;
     }
 
     private void Update ()
@@ -78,22 +81,27 @@ public class PopupScript : MonoBehaviour {
                 loadingBar.rectTransform.localScale = new Vector2(prog, loadingBar.rectTransform.localScale.y);
             setDownloadInfos();
         }
-	}
+        if (((currTime / loadingTime) > 1.0f) && !seeding)
+        {
+            seedingSince += Time.deltaTime;
+            if (seedingSince > 3.0f)
+            {
+                seeding = true;
+                pm.sprout();
+            }
+        }
+    }
 
     public void Accept()
     {
 		ScoreManager sm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ScoreManager>();
         sm.improveScore(fileSize);
         Destroy(gameObject);
+        pm.wither();
     }
 
     public void Cancel()
     {
         Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        pm.wither();
     }
 }

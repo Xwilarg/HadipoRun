@@ -24,7 +24,7 @@ public class PopUpManager : MonoBehaviour
 
     private float conspicuousity;
     private uint seededCount;
-    [Tooltip("Conspicuousity grows by pow(cons, n), n being the number of seeded downloads.")]
+    [Tooltip("Conspicuousity grows by x * n, n being the number of seeded downloads.")]
     public float conspicuousityFactor;
     [Tooltip("Conspicuousity falls by x per seconds if no downloads are seeded.")]
     public float stealthFactor;
@@ -71,16 +71,10 @@ public class PopUpManager : MonoBehaviour
             GenericAdd(PopUpType.INFO, "Info", infos[Random.Range(0, infos.Length)]);
         }
         if (seededCount == 0)
-        {
-            conspicuousity -= stealthFactor * timer;
-            conspicuousityText.text = "Empty: ";
-        }
+            conspicuousity -= stealthFactor * Time.deltaTime;
         else
-        {
-            conspicuousity += Mathf.Pow(conspicuousityFactor, seededCount) * timer;
-            conspicuousityText.text = "Seeding: ";
-        }
-        conspicuousityText.text = System.String.Concat(conspicuousityText.text, conspicuousity.ToString());
+            conspicuousity += conspicuousityFactor * seededCount * Time.deltaTime;
+        conspicuousityText.text = System.String.Concat("Seeding: ", conspicuousity);
         timerAvest += Time.deltaTime;
         if (timerAvest > refTimerAvest)
         {
@@ -145,6 +139,9 @@ public class PopUpManager : MonoBehaviour
         RectTransform puTranform = pu.transform as RectTransform;
         Vector2 minRatio = new Vector2((puTranform.rect.width / 2) / canvas.rect.width, (puTranform.rect.height / 2) / canvas.rect.height);
         Vector2 spawnPoint = new Vector2(Random.Range(minRatio.x, 1 - minRatio.x), Random.Range(minRatio.y, 1 - minRatio.y));
+        string debugMsg = "Pu: " + puTranform.rect.width.ToString() + "; " + puTranform.rect.height.ToString() + "\n";
+        debugMsg += "canvas: " + canvas.rect.width.ToString() + "; " + canvas.rect.height.ToString() + "\n";
+        print(debugMsg);
         puTranform.anchorMin = spawnPoint;
         puTranform.anchorMax = spawnPoint;
         ResetTimer();
