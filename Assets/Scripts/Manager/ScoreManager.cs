@@ -16,6 +16,11 @@ public class ScoreManager : MonoBehaviour {
     {
         hadipoScore += increase;
         hadipoSlider.value = hadipoScore * 100 / maxHadipoScore;
+        if (hadipoScore == 100)
+        {
+            // CALL CALLBACK FOR STRIKE
+            hadipoScore = 0.0f;
+        }
     }
 
 	private void Start ()
@@ -36,7 +41,7 @@ public class ScoreManager : MonoBehaviour {
 
 	public void gameOverBSOD()
 	{
-		gameOver ();
+		gameOver();
 		Screen.fullScreen = true;
 		SceneManager.LoadSceneAsync("GameOver");
 	}
