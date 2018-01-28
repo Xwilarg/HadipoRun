@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114542090741234556}
   - component: {fileID: 114391909951034288}
   m_Layer: 0
-  m_Name: Stop
+  m_Name: Bug
   m_TagString: Virus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

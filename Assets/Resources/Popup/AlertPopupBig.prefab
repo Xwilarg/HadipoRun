@@ -93,8 +93,8 @@ GameObject:
   - component: {fileID: 114847385228485362}
   - component: {fileID: 114999649917992570}
   - component: {fileID: 114353195597890388}
-  - component: {fileID: 114707896987512962}
-  - component: {fileID: 114870666749802504}
+  - component: {fileID: 114590636186165790}
+  - component: {fileID: 114903851386317060}
   m_Layer: 5
   m_Name: AlertPopupBig
   m_TagString: Untagged
@@ -276,6 +276,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Error Starting Program
+--- !u!114 &114590636186165790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640924572906786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d466e6efbbff904dad9249037ca6614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowTitle: {fileID: 114494688762457038}
+  windowDescription: {fileID: 114844638784585486}
 --- !u!114 &114662275099186184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -303,19 +316,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114707896987512962
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1640924572906786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d9f445c09a49542a6fe5c01721b56a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  windowTitle: {fileID: 114494688762457038}
-  windowDescription: {fileID: 114844638784585486}
 --- !u!114 &114796498571719484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114870666749802504
+--- !u!114 &114903851386317060
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -411,10 +411,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1640924572906786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dadc2c8348579c4f8142cf271b3c14e, type: 3}
+  m_Script: {fileID: 11500000, guid: a3e43f294ad1e484e9b3c957811ae34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bigErrorText: {fileID: 114972894589633900}
+  errorText: {fileID: 114972894589633900}
 --- !u!114 &114972894589633900
 MonoBehaviour:
   m_ObjectHideFlags: 1

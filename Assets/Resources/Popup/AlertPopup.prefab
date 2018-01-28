@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 114930532006554594}
   - component: {fileID: 114989253850635854}
   - component: {fileID: 114721023936315982}
-  - component: {fileID: 114685229805209558}
+  - component: {fileID: 114953217431684732}
   m_Layer: 5
   m_Name: AlertPopup
   m_TagString: Untagged
@@ -352,19 +352,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114685229805209558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1781141135925986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d9f445c09a49542a6fe5c01721b56a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  windowTitle: {fileID: 114790009566846092}
-  windowDescription: {fileID: 114422952266880276}
 --- !u!114 &114721023936315982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -504,6 +491,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114953217431684732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781141135925986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d466e6efbbff904dad9249037ca6614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowTitle: {fileID: 114790009566846092}
+  windowDescription: {fileID: 114422952266880276}
 --- !u!114 &114980359366907416
 MonoBehaviour:
   m_ObjectHideFlags: 1
