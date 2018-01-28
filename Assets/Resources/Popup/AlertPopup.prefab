@@ -338,8 +338,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781141135925986}
-        m_MethodName: 
+      - m_Target: {fileID: 114757568142215048}
+        m_MethodName: Cancel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -368,6 +368,7 @@ MonoBehaviour:
   windowName: {fileID: 114790009566846092}
   windowContent: {fileID: 114422952266880276}
   downloadInfos: {fileID: 0}
+  bigErrorInfos: {fileID: 0}
   seedingSince: 0
 --- !u!114 &114790009566846092
 MonoBehaviour:
