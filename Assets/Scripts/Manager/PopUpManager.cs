@@ -24,27 +24,33 @@ public class PopUpManager : MonoBehaviour
     public RectTransform canvas;
     [Tooltip("Avest popup")]
     public AvestNotificationController avest;
+    [Tooltip("Conspicuousity Slider.")]
+    public Slider conspicuousitySlider;
+    [Tooltip("Conspicuousity after which you get a strike.")]
+    public float maxConspicuousity = 1000.0f;
     [Tooltip("Max Strikes")]
     public uint maxStrikes = 3;
-    [Tooltip("Immunity immediately after Strike.")]
-    public float immunityLength = 5.0f;
+    [Tooltip("Immunity duration immediately after Strike.")]
+    public float maxImmunity = 5.0f;
 
+    [Tooltip("Conspicuousity grows by x * n, n being the number of seeded downloads.")]
+    public float conspicuousityFactor = 1.3f;
+    [Tooltip("Conspicuousity falls by x per seconds if no downloads are seeded.")]
+    public float stealthFactor = 1.0f;
+    private uint strikes;
+    private float strikeImmunity;
+    private Text conspicuousityText;
+    private Image conspicuousityFill;
     private float conspicuousity;
     private uint seededCount;
-    [Tooltip("Conspicuousity grows by x * n, n being the number of seeded downloads.")]
-    public float conspicuousityFactor;
-    [Tooltip("Conspicuousity falls by x per seconds if no downloads are seeded.")]
-    public float stealthFactor;
 
     private float timer;
     private float refTimer;
     private float timerAvest;
     private float refTimerAvest;
-    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp, bigErrorPopUp, penichPopUp, confirmDeletePopUp;
+    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp, bigErrorPopUp, penichPopUp;
     private Text conspicuousityText;
     private string[] infos;
-    private uint strikes;
-    private float strikeImmunity;
 
     private void ResetTimer()
     {
@@ -71,6 +77,16 @@ public class PopUpManager : MonoBehaviour
         confirmDeletePopUp = Resources.Load("Popup/ConfirmDeletePopUp") as GameObject;
         conspicuousityText = GameObject.Find("LeftCanvas").GetComponentInChildren<Text>();
         conspicuousity = 0.0f;
+        conspicuousityFill = null;
+        Image[] imageComponents = conspicuousitySlider.GetComponentsInChildren<Image>();
+        foreach (Image im in imageComponents)
+        {
+            if (im.name == "Fill")
+            {
+                conspicuousityFill = im;
+                break;
+            }
+        }
         seededCount = 0;
         strikes = 0;
         strikeImmunity = 0.0f;
@@ -82,7 +98,8 @@ public class PopUpManager : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > refTimer)
             GenericAdd(PopUpType.INFO, "Info", infos[Random.Range(0, infos.Length)]);
-        conspicuousityText.text = System.String.Concat("Seeding: ", conspicuousity);
+        conspicuousityText.text = System.String.Concat("Conspicuousity: ", conspicuousity);
+        getTracked(Time.deltaTime);
         timerAvest += Time.deltaTime;
         if (timerAvest > refTimerAvest)
         {
@@ -104,16 +121,34 @@ public class PopUpManager : MonoBehaviour
     private void getTracked(float deltaTime)
     {
         print("Getting Tracked");
+        conspicuousitySlider.maxValue = (strikeImmunity > 0.0f) ? maxImmunity : maxConspicuousity;
+        conspicuousitySlider.value = (strikeImmunity > 0.0f) ? strikeImmunity : conspicuousity;
         if (strikeImmunity > 0.0f)
+        {
             strikeImmunity -= deltaTime;
-        else if (seededCount == 0)
-            conspicuousity -= stealthFactor * Time.deltaTime;
+            conspicuousityFill.color = (Mathf.Repeat(strikeImmunity, .5f) < .25f) ? Color.yellow : Color.magenta;
+        }
         else
-            conspicuousity += conspicuousityFactor * seededCount * Time.deltaTime;
-        if (conspicuousity > 1000)
+        {
+            conspicuousityFill.color = new Color(1.0f, 0.6f, 0.0f, 1.0f);
+            print("Not Immune");
+            conspicuousity += deltaTime * ((seededCount == 0) ? -stealthFactor : conspicuousityFactor * seededCount);
+        }
+        print("Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString());
+        if ((conspicuousity > 1000) && (strikes < maxStrikes))
         {
             strikes++;
             conspicuousity = 0.0f;
+            strikeImmunity = maxImmunity;
+            if (strikes >= maxStrikes)
+                gameOver();
+            else
+            {
+                conspicuousityText.text = "Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString();
+                PopupScript[] popups = GameObject.FindObjectsOfType<PopupScript>();
+                foreach (PopupScript popup in popups)
+                    popup.Cancel();
+            }
         }
     }
 
@@ -181,22 +216,7 @@ public class PopUpManager : MonoBehaviour
     {
         conspicuousityText.text = "Game Over!Game Over!Game Over!Game Over!";
     }
-
-    /* private void getTracked(float deltaTime)
-	{
-		print ("Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString ());
-		if ((conspicuousity > 1000) && (strikes < maxStrikes)) {
-			strikes++;
-			conspicuousity = 0.0f;
-			strikeImmunity = immunityLength;
-			if (strikes >= maxStrikes)
-				gameOver ();
-			else {
-				conspicuousityText.text = "Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString ();
-				PopupScript[] popups = GameObject.FindObjectsOfType<PopupScript> ();
-				foreach (PopupScript popup in popups)
-					popup.Cancel ();
-			}
-		}
-	}*/
 }
+
+    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp, bigErrorPopUp, penichPopUp;
+    private Text conspicuousityText;

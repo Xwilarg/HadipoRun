@@ -26,7 +26,7 @@ public class PopupScript : MonoBehaviour {
     private float downloaded;
     private PopUpManager pm;
     private bool seeding;
-    public float seedingSince;
+    private float seedingSince;
 
     public void setDownloadVars(float fileSize, string windowName, string windowContent, string bigErrorInfos)
     {
