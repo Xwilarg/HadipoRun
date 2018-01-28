@@ -8,7 +8,8 @@ public enum PopUpType
     DOWNLOAD,
     ALERT,
     COMFIRM,
-    INFO
+    INFO,
+    BIGERROR
 }
 
 public class PopUpManager : MonoBehaviour
@@ -35,7 +36,7 @@ public class PopUpManager : MonoBehaviour
     private float refTimer;
     private float timerAvest;
     private float refTimerAvest;
-    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp;
+    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp, bigErrorPopUp;
     private Text conspicuousityText;
     private string[] infos;
     private uint strikes;
@@ -61,6 +62,7 @@ public class PopUpManager : MonoBehaviour
         alertPopUp = Resources.Load("Popup/AlertPopup") as GameObject;
         comfirmPopUp = Resources.Load("Popup/ConfirmDeletePopUp") as GameObject;
         infoPopUp = Resources.Load("Popup/InfoPopUp") as GameObject;
+        bigErrorPopUp = Resources.Load("Popup/AlertPopUpBig") as GameObject;
         conspicuousityText = GameObject.Find("LeftCanvas").GetComponentInChildren<Text>();
         conspicuousity = 0.0f;
         seededCount = 0;
@@ -109,7 +111,7 @@ public class PopUpManager : MonoBehaviour
         }
     }
 
-    public void GenericAdd(PopUpType put, string windowName, string windowContent)
+    public void GenericAdd(PopUpType put, string windowName, string windowContent, string additionalContent = "")
     {
         switch (put)
         {
@@ -121,6 +123,9 @@ public class PopUpManager : MonoBehaviour
                 break;
             case PopUpType.INFO:
                 AddPopup(put, infoPopUp, "Info Popup", windowName, 0, windowContent);
+                break;
+            case PopUpType.BIGERROR:
+                AddPopup(put, bigErrorPopUp, "Big Error Popup", windowName, 0, windowContent, additionalContent);
                 break;
             default:
                 Assert.IsTrue(false, "Invalid arguments");
@@ -146,10 +151,10 @@ public class PopUpManager : MonoBehaviour
         //AddPopup(samplePopUp, "Annoying Popup");
     }
 
-    private void AddPopup(PopUpType pot, GameObject go, string popupName, string windowName, float fileSize = 0, string content = null)
+    private void AddPopup(PopUpType pot, GameObject go, string popupName, string windowName, float fileSize = 0, string content = null, string additionalContent = null)
     {
         GameObject pu = Instantiate(go, Vector3.zero, Quaternion.identity);
-        pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName, content);
+        pu.GetComponent<PopupScript>().setDownloadVars(fileSize, windowName, content, additionalContent);
         pu.name = popupName;
         pu.transform.SetParent(canvas, false);
         RectTransform puTranform = pu.transform as RectTransform;

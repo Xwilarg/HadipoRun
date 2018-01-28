@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 50247565655234254}
   - component: {fileID: 114309542194859248}
   - component: {fileID: 114777495396892462}
+  - component: {fileID: 114882233588554566}
   m_Layer: 0
   m_Name: Folder
   m_TagString: Item
@@ -201,6 +202,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+--- !u!114 &114882233588554566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687919283588290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd4c0ae80f72f745b3ee5dee5df94e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDelayMin: 15
+  spawnDelayMax: 20
 --- !u!212 &212549008228034092
 SpriteRenderer:
   m_ObjectHideFlags: 1
