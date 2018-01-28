@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 114061013080468198}
   - component: {fileID: 114477069634536098}
   - component: {fileID: 114152484575812028}
+  - component: {fileID: 114089274607560472}
   m_Layer: 5
   m_Name: ConfirmDeletePopUp
   m_TagString: Untagged
@@ -226,8 +227,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Cancel
+      - m_Target: {fileID: 114089274607560472}
+        m_MethodName: EndGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -347,6 +348,25 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114089274607560472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733202266207146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0ee140dd7eb90408e596042b5c5019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBar: {fileID: 0}
+  cancelButton: {fileID: 114226482102089436}
+  crossButton: {fileID: 0}
+  windowName: {fileID: 114143146217135220}
+  windowContent: {fileID: 114267282355450988}
+  downloadInfos: {fileID: 0}
+  bigErrorInfos: {fileID: 0}
+  seedingSince: 0
 --- !u!114 &114143146217135220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -441,8 +461,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1733202266207146}
-        m_MethodName: 
+      - m_Target: {fileID: 114089274607560472}
+        m_MethodName: Cancel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

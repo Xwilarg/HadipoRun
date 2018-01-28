@@ -10,7 +10,8 @@ public enum PopUpType
     COMFIRM,
     INFO,
     BIGERROR,
-    BROWSER
+    BROWSER,
+    SYS32
 }
 
 public class PopUpManager : MonoBehaviour
@@ -39,7 +40,7 @@ public class PopUpManager : MonoBehaviour
     private float refTimer;
     private float timerAvest;
     private float refTimerAvest;
-    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp, bigErrorPopUp, penichPopUp;
+    private GameObject downloadPopUp, alertPopUp, comfirmPopUp, infoPopUp, bigErrorPopUp, penichPopUp, confirmDeletePopUp;
     private Text conspicuousityText;
     private string[] infos;
     private uint strikes;
@@ -68,6 +69,7 @@ public class PopUpManager : MonoBehaviour
         infoPopUp = Resources.Load("Popup/InfoPopUp") as GameObject;
         bigErrorPopUp = Resources.Load("Popup/AlertPopUpBig") as GameObject;
         penichPopUp = Resources.Load("Ads/IEWindowPeniche") as GameObject;
+        confirmDeletePopUp = Resources.Load("Popup/ConfirmDeletePopUp") as GameObject;
         conspicuousityText = GameObject.Find("LeftCanvas").GetComponentInChildren<Text>();
         conspicuousity = 0.0f;
         seededCount = 0;
@@ -116,7 +118,7 @@ public class PopUpManager : MonoBehaviour
         }
     }
 
-    public void GenericAdd(PopUpType put, string windowName, string windowContent = "", string additionalContent = "")
+    public void GenericAdd(PopUpType put, string windowName = "", string windowContent = "", string additionalContent = "")
     {
         switch (put)
         {
@@ -134,6 +136,9 @@ public class PopUpManager : MonoBehaviour
                 break;
             case PopUpType.BROWSER:
                 AddPopup(put, penichPopUp, "Browser Popup", windowName, 0, "");
+                break;
+            case PopUpType.SYS32:
+                AddPopup(put, confirmDeletePopUp, "Delete Sys32 Popup", windowName, 0, windowContent);
                 break;
             default:
                 Assert.IsTrue(false, "Invalid arguments");

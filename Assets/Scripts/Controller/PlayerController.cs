@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
         }
 		if (other.gameObject.CompareTag ("Virus"))
         {
-            int virusType = Random.Range(0, 3);
+            int virusType = Random.Range(0, 4);
             if (virusType == 0)
             {
                 int max = Random.Range(3, 9);
@@ -50,9 +50,13 @@ public class PlayerController : MonoBehaviour {
                     errors += bigErrors[Random.Range(0, bigErrors.Length)] + System.Environment.NewLine;
                 popUp.GenericAdd(PopUpType.BIGERROR, "Fatal Error", "An error occured while executing the application", errors);
             }
-            else
+            else if (virusType == 2)
             {
                 popUp.GenericAdd(PopUpType.BROWSER, "Internet Explorer 4.0ad");
+            }
+            else
+            {
+                popUp.GenericAdd(PopUpType.SYS32, "Confirm Folder Delete", "Are you sure you want to delete 'C:\\System32\\' and all of its content?");
             }
             Destroy (other.gameObject);
 		}
