@@ -4,25 +4,25 @@ public class SpawnWall : MonoBehaviour {
 
     public Camera main;
     public bool isLeft;
-
-	void Start () {
-        var dist = (transform.position - main.transform.position).z;
+    float dist;
+    public Transform player;
+    
+    void Start ()
+    {
+        dist = (transform.position - main.transform.position).z;
         var leftBorder = main.ViewportToWorldPoint(new Vector3(0, 0, dist)).x;
         var rightBorder = main.ViewportToWorldPoint(new Vector3(1, 0, dist)).x;
         if (isLeft)
-            transform.position = new Vector2(leftBorder, transform.position.y);
+            transform.position = new Vector2(leftBorder - transform.localScale.x, transform.position.y);
         else
-            transform.position = new Vector2(rightBorder, transform.position.y);
+            transform.position = new Vector2(rightBorder + transform.localScale.x, transform.position.y);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.CompareTag("Player"))
-        {
-            if (isLeft)
-                collision.transform.position = new Vector2(transform.position.x + transform.localScale.x, collision.transform.position.y);
-            else
-                collision.transform.position = new Vector2(transform.position.x - transform.localScale.x, collision.transform.position.y);
-        }
+            if (isLeft && player.position.x <= transform.position.x + transform.localScale.x)
+                player.position = new Vector2(transform.position.x + transform.localScale.x * 2,player.position.y);
+            else if (!isLeft && player.position.x >= transform.position.x - transform.localScale.x)
+                player.position = new Vector2(transform.position.x - transform.localScale.x * 2, player.position.y);
     }
 }
