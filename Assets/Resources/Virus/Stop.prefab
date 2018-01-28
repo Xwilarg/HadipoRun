@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDelayMin: 9
   spawnDelayMax: 11
+  scoring: 10000
   spawnPatern: 1
 --- !u!114 &114542090741234556
 MonoBehaviour:

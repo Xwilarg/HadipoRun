@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDelayMin: 17
   spawnDelayMax: 20
+  scoring: 6000
   spawnPatern: 0
 --- !u!212 &212549008228034092
 SpriteRenderer:

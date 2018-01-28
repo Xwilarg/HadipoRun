@@ -28,10 +28,16 @@ public class ScoreManager : MonoBehaviour {
         score = 0.0f;
         hadipoScore = 0.0f;
 	}
+
+    public float getScore()
+    {
+        return (score);
+    }
 	
 	public void improveScore(float addScore)
     {
         score += addScore;
+        Debug.Log(score);
     }
 
 	public void gameOverHadipo()

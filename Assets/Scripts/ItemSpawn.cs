@@ -7,6 +7,10 @@ public class ItemSpawn : MonoBehaviour{
 	[Tooltip("Time max beetween spawn")]
 	public float spawnDelayMax;
 
+    [Tooltip("Step before item is allowed")]
+    public float scoring;
+    private ScoreManager sm = null;
+
 	public enum SpawnPatern {
 		SINGLE,
 		WALL,
@@ -15,13 +19,17 @@ public class ItemSpawn : MonoBehaviour{
 	public SpawnPatern spawnPatern;
 	private float count;
 
-	void Start() 
-	{
+	void Start()
+    {
 		count = Random.Range(spawnDelayMin, spawnDelayMax);
 	}
 
 	public bool canBeInstantiate (float delay)
 	{
+        if (sm == null)
+            sm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ScoreManager>();
+        if (sm.getScore() < scoring)
+            return (false);
 		bool action = false;
 
 		if (count <= 0) {
