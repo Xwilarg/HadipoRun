@@ -200,9 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd4c0ae80f72f745b3ee5dee5df94e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelayMin: 7
-  spawnDelayMax: 10
-  spawnPatern: 1
+  spawnDelayMin: 6
+  spawnDelayMax: 7
+  spawnPatern: 0
 --- !u!114 &114542090741234556
 MonoBehaviour:
   m_ObjectHideFlags: 1
