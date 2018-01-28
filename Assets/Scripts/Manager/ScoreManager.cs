@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour {
 
@@ -43,5 +44,7 @@ public class ScoreManager : MonoBehaviour {
             }
         }
         File.WriteAllLines("bestScores.dat", allLines);
+        Screen.fullScreen = true;
+        SceneManager.LoadSceneAsync("GameOver");
     }
 }

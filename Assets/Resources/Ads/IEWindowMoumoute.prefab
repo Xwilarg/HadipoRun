@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 114484752650915498}
   - component: {fileID: 114280549923243776}
   - component: {fileID: 114675120926586210}
+  - component: {fileID: 114936894018542572}
   m_Layer: 5
   m_Name: IEWindowMoumoute
   m_TagString: Untagged
@@ -316,6 +317,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe51e07daaa9dd428a8424987f37076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114936894018542572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406121712856838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0ee140dd7eb90408e596042b5c5019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBar: {fileID: 0}
+  cancelButton: {fileID: 114966530440753478}
+  crossButton: {fileID: 0}
+  windowName: {fileID: 114073423277167630}
+  windowContent: {fileID: 0}
+  downloadInfos: {fileID: 0}
+  bigErrorInfos: {fileID: 0}
+  seedingSince: 0
 --- !u!114 &114966530440753478
 MonoBehaviour:
   m_ObjectHideFlags: 1

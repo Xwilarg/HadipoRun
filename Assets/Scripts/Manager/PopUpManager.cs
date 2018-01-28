@@ -68,7 +68,6 @@ public class PopUpManager : MonoBehaviour
         comfirmPopUp = Resources.Load("Popup/ConfirmDeletePopUp") as GameObject;
         infoPopUp = Resources.Load("Popup/InfoPopUp") as GameObject;
         bigErrorPopUp = Resources.Load("Popup/AlertPopUpBig") as GameObject;
-        penichPopUp = Resources.Load("Ads/IEWindowPeniche") as GameObject;
         confirmDeletePopUp = Resources.Load("Popup/ConfirmDeletePopUp") as GameObject;
         conspicuousityText = GameObject.Find("LeftCanvas").GetComponentInChildren<Text>();
         conspicuousity = 0.0f;
@@ -135,6 +134,11 @@ public class PopUpManager : MonoBehaviour
                 AddPopup(put, bigErrorPopUp, "Big Error Popup", windowName, 0, windowContent, additionalContent);
                 break;
             case PopUpType.BROWSER:
+                int nb = Random.Range(0, 2);
+                if (nb == 0)
+                    penichPopUp = Resources.Load("Ads/IEWindowPeniche") as GameObject;
+                else
+                    penichPopUp = Resources.Load("Ads/IEWindowMoumoute") as GameObject;
                 AddPopup(put, penichPopUp, "Browser Popup", windowName, 0, "");
                 break;
             case PopUpType.SYS32:
