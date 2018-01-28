@@ -7,6 +7,12 @@ public class ItemSpawn : MonoBehaviour{
 	[Tooltip("Time max beetween spawn")]
 	public float spawnDelayMax;
 
+	public enum SpawnPatern {
+		SINGLE,
+		WALL,
+	}
+
+	public SpawnPatern spawnPatern;
 	private float count;
 
 	void Start() 

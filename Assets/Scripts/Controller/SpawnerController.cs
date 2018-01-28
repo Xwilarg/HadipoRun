@@ -15,12 +15,23 @@ public class SpawnerController : MonoBehaviour {
 	void Update () {
 		foreach (GameObject item in ItemList) {
 			ItemSpawn spawn = item.GetComponent<ItemSpawn> ();
-			if (spawn.canBeInstantiate (Time.deltaTime) == true) {
-				float maxX = Random.Range(-transform.localScale.x, transform.localScale.x);
-				Vector2 spawnPlace = new Vector2(transform.position.x + maxX, transform.position.y);
 
-				Instantiate(item, spawnPlace, Quaternion.identity);
+			if (spawn.canBeInstantiate (Time.deltaTime) == true) {
+				
+				if (spawn.spawnPatern == ItemSpawn.SpawnPatern.SINGLE) {
+					SpawnSingle (item);
+				} else if (spawn.spawnPatern == ItemSpawn.SpawnPatern.WALL) {
+					
+				}
 			}
 		}
 	}
+
+	void  SpawnSingle(GameObject item){
+		float maxX = Random.Range (-transform.localScale.x, transform.localScale.x);
+		Vector2 spawnPlace = new Vector2 (transform.position.x + maxX, transform.position.y);
+		Instantiate (item, spawnPlace, Quaternion.identity);
+	}
 }
+
+	

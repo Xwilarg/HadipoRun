@@ -79,7 +79,6 @@ public class PopUpManager : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > refTimer)
             GenericAdd(PopUpType.INFO, "Info", infos[Random.Range(0, infos.Length)]);
-        }
         conspicuousityText.text = System.String.Concat("Seeding: ", conspicuousity);
         timerAvest += Time.deltaTime;
         if (timerAvest > refTimerAvest)
@@ -149,12 +148,7 @@ public class PopUpManager : MonoBehaviour
                 break;
         }
     }
-
-    private void AddAnnoyingPopup(string title, string content)
-    {
-        //AddPopup(samplePopUp, "Annoying Popup");
-    }
-
+		
     private void AddPopup(PopUpType pot, GameObject go, string popupName, string windowName, float fileSize = 0, string content = null, string additionalContent = null)
     {
         GameObject pu = Instantiate(go, Vector3.zero, Quaternion.identity);
@@ -168,28 +162,27 @@ public class PopUpManager : MonoBehaviour
         puTranform.anchorMax = spawnPoint;
         ResetTimer();
     }
-}
-        }
-        getTracked(Time.deltaTime);
-    private void gameOver()
+
+   private void gameOver()
     {
         conspicuousityText.text = "Game Over!Game Over!Game Over!Game Over!";
     }
 
-    private void getTracked(float deltaTime)
-        print("Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString());
-        if ((conspicuousity > 1000) && (strikes < maxStrikes))
-        {
-            strikes++;
-            conspicuousity = 0.0f;
-            strikeImmunity = immunityLength;
-            if (strikes >= maxStrikes)
-                gameOver();
-            else
-            {
-                conspicuousityText.text = "Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString();
-                PopupScript[] popups = GameObject.FindObjectsOfType<PopupScript>();
-                foreach (PopupScript popup in popups)
-                    popup.Cancel();
-            }
-        }
+    /* private void getTracked(float deltaTime)
+	{
+		print ("Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString ());
+		if ((conspicuousity > 1000) && (strikes < maxStrikes)) {
+			strikes++;
+			conspicuousity = 0.0f;
+			strikeImmunity = immunityLength;
+			if (strikes >= maxStrikes)
+				gameOver ();
+			else {
+				conspicuousityText.text = "Strikes: " + strikes + " and conspicuousity: " + conspicuousity.ToString ();
+				PopupScript[] popups = GameObject.FindObjectsOfType<PopupScript> ();
+				foreach (PopupScript popup in popups)
+					popup.Cancel ();
+			}
+		}
+	}*/
+}
