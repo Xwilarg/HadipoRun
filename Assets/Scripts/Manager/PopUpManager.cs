@@ -65,7 +65,11 @@ public class PopUpManager : MonoBehaviour
 
     private void Start()
     {
-        infos = File.ReadAllLines("NameDatabase/infos.dat");
+        infos = new string[] {
+            "The line endings are not consistent and were remplaced by Windows (CR LF) line endings.",
+            "Undefined reference to \"Programmer_Skills.a\" in HadipoRun.",
+            "A required .DLL file, msvcr120.dll, was not found."
+        };
         Assert.IsTrue(interval.x > 0 && interval.y > 0 && inAvest.x > 0 && inAvest.y > 0, "Intervalle bounds must be greater than 0.");
         Assert.IsTrue(interval.x < interval.y && inAvest.x < inAvest.y, "Intervalle lower bound must be lower than highter bound.");
 		LoadPrefabs ();
